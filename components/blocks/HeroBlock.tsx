@@ -8,10 +8,24 @@ import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 const Hero3DScene = dynamic(() => import("../3d/Hero3DScene"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full min-h-[380px] lg:min-h-[520px] flex items-center justify-center bg-surface-dark/40 rounded-2xl animate-pulse">
-      <div className="text-accent-cyan text-sm tracking-wider font-mono">
-        INITIALIZING QUANTUM ORBITALS...
-      </div>
+    <div className="w-full h-full min-h-[380px] lg:min-h-[500px] flex items-center justify-center p-8 bg-surface-dark rounded-2xl relative overflow-hidden">
+      <svg
+        viewBox="0 0 400 400"
+        className="w-full h-full max-w-[340px] text-accent-cyan opacity-80 animate-spin-slow"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <circle cx="200" cy="200" r="140" strokeDasharray="4 4" className="opacity-30" />
+        <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(30 200 200)" />
+        <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(-45 200 200)" />
+        <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(75 200 200)" />
+        <circle cx="200" cy="200" r="28" fill="#1D4ED8" className="opacity-80" />
+        <circle cx="200" cy="200" r="12" fill="#06B6D4" />
+        <circle cx="340" cy="200" r="6" fill="#06B6D4" />
+        <circle cx="80" cy="130" r="5" fill="#6366F1" />
+        <circle cx="270" cy="320" r="5" fill="#1D4ED8" />
+      </svg>
     </div>
   ),
 });

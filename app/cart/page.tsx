@@ -95,6 +95,19 @@ export default function CartPage() {
             <span>Proceed to Checkout</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
+
+          <Link
+            href="/notes"
+            className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-ink-muted hover:text-ink-primary text-xs font-semibold transition-colors"
+          >
+            <span>← Continue Browsing Notes</span>
+          </Link>
+
+          <div className="pt-2 border-t border-border flex items-center justify-center gap-3 text-[10px] font-mono text-ink-muted">
+            <span>🔒 256-bit Encrypted</span>
+            <span>•</span>
+            <span>⚡ Instant PDF Release</span>
+          </div>
         </div>
 
       </div>

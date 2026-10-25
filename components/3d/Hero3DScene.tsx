@@ -17,6 +17,7 @@ export default function Hero3DScene({
   const containerRef = useRef<HTMLDivElement>(null);
   const [webglSupported, setWebglSupported] = useState<boolean>(true);
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
     // Check reduced motion preference
@@ -43,30 +44,35 @@ export default function Hero3DScene({
       return;
     }
 
-    // 1. Scene & Camera Setup
+    // 1. Scene & Camera Setup with guaranteed dimensions
+    const width = container.clientWidth || 460;
+    const height = container.clientHeight || 460;
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      container.clientWidth / container.clientHeight,
-      0.1,
-      1000
-    );
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 0, 18);
 
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: "high-performance",
-    });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-    container.appendChild(renderer.domElement);
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true,
+        powerPreference: "high-performance",
+      });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      container.appendChild(renderer.domElement);
+      setIsReady(true);
+    } catch {
+      setWebglSupported(false);
+      return;
+    }
 
     // 2. Quantum Orbital & Molecular Crystal Structure
     const rootGroup = new THREE.Group();
     scene.add(rootGroup);
 
-    // Core Nucleus / Center Sphere
+    // Core Nucleus / Center Sphere with Dual Shell
     const coreGeometry = new THREE.IcosahedronGeometry(1.6, 2);
     const coreMaterial = new THREE.MeshBasicMaterial({
       color: new THREE.Color(primaryColor),
@@ -90,17 +96,17 @@ export default function Hero3DScene({
       new THREE.MeshBasicMaterial({
         color: new THREE.Color(accentColor),
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.7,
       }),
       new THREE.MeshBasicMaterial({
         color: new THREE.Color(primaryColor),
         transparent: true,
-        opacity: 0.5,
+        opacity: 0.6,
       }),
       new THREE.MeshBasicMaterial({
-        color: new THREE.Color("#6366F1"),
+        color: new THREE.Color("#818CF8"),
         transparent: true,
-        opacity: 0.45,
+        opacity: 0.5,
       }),
     ];
 
@@ -112,10 +118,12 @@ export default function Hero3DScene({
     ];
 
     const rings: THREE.Line[] = [];
+    const electrons: THREE.Mesh[] = [];
+
     ringRadii.forEach((radius, idx) => {
       const ringGeom = new THREE.BufferGeometry();
       const points: THREE.Vector3[] = [];
-      const segments = 64;
+      const segments = 96;
       for (let i = 0; i <= segments; i++) {
         const theta = (i / segments) * Math.PI * 2;
         points.push(
@@ -128,10 +136,19 @@ export default function Hero3DScene({
       ring.rotation.y = ringTilts[idx].y;
       rootGroup.add(ring);
       rings.push(ring);
+
+      // Glowing electron orbiting each ring
+      const electronGeom = new THREE.SphereGeometry(0.24, 12, 12);
+      const electronMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(idx === 0 ? accentColor : "#A5B4FC"),
+      });
+      const electronMesh = new THREE.Mesh(electronGeom, electronMat);
+      rootGroup.add(electronMesh);
+      electrons.push(electronMesh);
     });
 
     // Molecular Valence Nodes (Electron / Lattice cloud)
-    const particleCount = 120;
+    const particleCount = 140;
     const particleGeometry = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -140,7 +157,7 @@ export default function Hero3DScene({
     const c2 = new THREE.Color(primaryColor);
 
     for (let i = 0; i < particleCount; i++) {
-      const radius = 3.5 + Math.random() * 5.0;
+      const radius = 3.2 + Math.random() * 5.2;
       const u = Math.random();
       const v = Math.random();
       const theta = u * 2.0 * Math.PI;
@@ -164,7 +181,7 @@ export default function Hero3DScene({
     particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
-      size: 0.18,
+      size: 0.16,
       vertexColors: true,
       transparent: true,
       opacity: 0.85,
@@ -181,26 +198,32 @@ export default function Hero3DScene({
 
     const onPointerMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
-      targetX = x * 0.8;
-      targetY = y * 0.8;
+      targetX = x * 0.7;
+      targetY = y * 0.7;
     };
 
     window.addEventListener("mousemove", onPointerMove);
 
     // Handle Window Resize
     const onResize = () => {
-      if (!container) return;
-      camera.aspect = container.clientWidth / container.clientHeight;
+      if (!container || !renderer) return;
+      const newW = container.clientWidth || 460;
+      const newH = container.clientHeight || 460;
+      camera.aspect = newW / newH;
       camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setSize(newW, newH);
     };
     window.addEventListener("resize", onResize);
 
+    // Ensure size is adjusted right after initial DOM render
+    const initialResizeTimer = setTimeout(onResize, 50);
+
     // 3. Animation Loop with Framerate & Visibility Guard
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
     let isVisible = true;
 
     const observer = new IntersectionObserver(
@@ -219,15 +242,35 @@ export default function Hero3DScene({
       if (!isVisible) return;
 
       const delta = clock.getDelta();
+      const elapsed = clock.getElapsedTime();
       const currentSpeed = speed * delta;
 
       // Smooth mouse follow
       mouseX += (targetX - mouseX) * 0.05;
       mouseY += (targetY - mouseY) * 0.05;
 
-      rootGroup.rotation.y += 0.25 * currentSpeed;
+      rootGroup.rotation.y += 0.22 * currentSpeed;
       rootGroup.rotation.x = mouseY * 0.5;
       rootGroup.rotation.z = mouseX * 0.5;
+
+      // Orbit electrons along tilted rings
+      ringRadii.forEach((radius, idx) => {
+        const electron = electrons[idx];
+        const tilt = ringTilts[idx];
+        const angle = elapsed * (1.2 + idx * 0.4) * (idx % 2 === 0 ? 1 : -1);
+
+        // Vector on flat circle
+        const p = new THREE.Vector3(
+          Math.cos(angle) * radius,
+          0,
+          Math.sin(angle) * radius
+        );
+        // Apply tilt rotation
+        p.applyAxisAngle(new THREE.Vector3(1, 0, 0), tilt.x);
+        p.applyAxisAngle(new THREE.Vector3(0, 1, 0), tilt.y);
+
+        electron.position.copy(p);
+      });
 
       // Pulse and spin rings individually
       rings.forEach((ring, idx) => {
@@ -235,7 +278,7 @@ export default function Hero3DScene({
       });
 
       // Subtle breath on core
-      const scale = 1 + Math.sin(clock.getElapsedTime() * 1.5) * 0.05;
+      const scale = 1 + Math.sin(elapsed * 1.5) * 0.05;
       coreMesh.scale.set(scale, scale, scale);
 
       renderer.render(scene, camera);
@@ -245,6 +288,7 @@ export default function Hero3DScene({
 
     // Cleanup on unmount
     return () => {
+      clearTimeout(initialResizeTimer);
       window.removeEventListener("mousemove", onPointerMove);
       window.removeEventListener("resize", onResize);
       observer.disconnect();
@@ -270,7 +314,7 @@ export default function Hero3DScene({
       <div className="w-full h-full flex items-center justify-center p-8 bg-surface-dark rounded-2xl relative overflow-hidden">
         <svg
           viewBox="0 0 400 400"
-          className="w-full h-full max-w-[340px] text-accent-cyan opacity-80"
+          className="w-full h-full max-w-[340px] text-accent-cyan opacity-90 animate-spin-slow"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
@@ -293,7 +337,9 @@ export default function Hero3DScene({
   return (
     <div
       ref={containerRef}
-      className="w-full h-full min-h-[380px] lg:min-h-[520px] relative cursor-grab active:cursor-grabbing"
+      className={`w-full h-full min-h-[380px] lg:min-h-[500px] relative cursor-grab active:cursor-grabbing transition-opacity duration-700 ${
+        isReady ? "opacity-100" : "opacity-0"
+      }`}
       aria-label="3D Quantum Orbital & Science Visualization"
     />
   );
