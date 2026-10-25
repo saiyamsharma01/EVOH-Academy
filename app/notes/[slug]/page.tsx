@@ -55,24 +55,24 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
   };
 
   return (
-    <div className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div className="py-8 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
       
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs font-mono text-ink-muted">
-        <Link href="/notes" className="hover:text-primary flex items-center gap-1">
+      <div className="flex items-center gap-2 text-xs font-mono text-ink-muted overflow-x-auto pb-1 no-scrollbar">
+        <Link href="/notes" className="hover:text-primary flex items-center gap-1 shrink-0">
           <ArrowLeft className="w-3.5 h-3.5" /> All Notes
         </Link>
         <span>/</span>
-        <span className="text-ink-primary font-bold">{note.subject}</span>
+        <span className="text-ink-primary font-bold shrink-0">{note.subject}</span>
         <span>/</span>
-        <span className="truncate max-w-[200px]">{note.title}</span>
+        <span className="truncate max-w-[180px] sm:max-w-[280px]">{note.title}</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
         {/* Left Column: Details & Preview */}
-        <div className="lg:col-span-8 space-y-10">
-          <div className="space-y-4">
+        <div className="lg:col-span-8 space-y-8 sm:space-y-10">
+          <div className="space-y-3 sm:space-y-4">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-primary/10 text-primary border border-primary/20">
                 CLASS {note.classLevel} SCIENCE
@@ -80,16 +80,16 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
               <span className="px-3 py-1 rounded-full text-xs font-mono bg-surface-muted text-ink-muted border border-border">
                 {note.type}
               </span>
-              <span className="text-xs font-mono text-ink-muted ml-auto">
+              <span className="text-xs font-mono text-ink-muted sm:ml-auto">
                 Edition: {note.version} • {note.lastUpdated}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
               {note.title}
             </h1>
 
-            <p className="text-base text-ink-secondary leading-relaxed">
+            <p className="text-sm sm:text-base text-ink-secondary leading-relaxed">
               {note.description}
             </p>
           </div>
@@ -101,12 +101,12 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
           />
 
           {/* Academic Faculty & Syllabus Verification Card */}
-          <div className="p-6 rounded-2xl bg-surface-muted border border-border flex flex-col sm:flex-row items-start sm:items-center gap-5">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+          <div className="p-4 sm:p-6 rounded-2xl bg-surface-muted border border-border flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
               <GraduationCap className="w-6 h-6" />
             </div>
             <div className="space-y-1 flex-1">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="font-display font-bold text-sm text-ink-primary">
                   {note.author}
                 </span>
@@ -121,15 +121,15 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
           </div>
 
           {/* What is Included Checklist */}
-          <div className="p-8 rounded-2xl bg-white border border-border shadow-sm space-y-4">
-            <h3 className="text-lg font-display font-bold text-ink-primary flex items-center gap-2">
+          <div className="p-5 sm:p-8 rounded-2xl bg-white border border-border shadow-sm space-y-4">
+            <h3 className="text-base sm:text-lg font-display font-bold text-ink-primary flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-accent-cyan" />
               <span>What Is Included in This Resource</span>
             </h3>
 
             <ul className="space-y-3">
               {note.whatIsIncluded.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-ink-primary">
+                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-primary">
                   <CheckCircle2 className="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -139,17 +139,17 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
         </div>
 
         {/* Right Column: Checkout Card & Licensing Guarantee */}
-        <div className="lg:col-span-4 sticky top-24 space-y-6">
-          <div className="p-8 rounded-2xl bg-white border border-border shadow-xl space-y-6">
+        <div className="lg:col-span-4 lg:sticky top-24 space-y-6 w-full">
+          <div className="p-5 sm:p-8 rounded-2xl bg-white border border-border shadow-xl space-y-6">
             <div className="space-y-1">
               <span className="text-xs font-mono uppercase text-ink-muted">Access License</span>
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-display font-extrabold text-ink-primary">
+                <span className="text-3xl sm:text-4xl font-display font-extrabold text-ink-primary">
                   {note.isFree ? "Free" : note.priceFormatted}
                 </span>
                 {!note.isFree && (
                   <span className="text-xs font-mono text-ink-muted">
-                    (GST inclusive, sequential invoice issued)
+                    (GST inclusive)
                   </span>
                 )}
               </div>
@@ -174,10 +174,10 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
                 </Link>
               )}
               
-              <div className="flex items-center justify-center gap-3 pt-2 text-[10px] font-mono text-ink-muted">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2 text-[10px] font-mono text-ink-muted">
                 <span>⚡ Instant Access</span>
                 <span>•</span>
-                <span>🔒 UPI / Cards / NetBanking</span>
+                <span>🔒 UPI / Cards</span>
                 <span>•</span>
                 <span>📄 GST Invoice</span>
               </div>
@@ -199,7 +199,7 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
               </div>
               <div className="flex justify-between">
                 <span>Protection:</span>
-                <span className="text-ink-primary font-bold">Dynamic Watermark Stamp</span>
+                <span className="text-ink-primary font-bold">Dynamic Watermark</span>
               </div>
             </div>
 
@@ -207,12 +207,12 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
             <div className="p-4 rounded-xl bg-surface-muted text-xs space-y-2 text-ink-muted">
               <div className="flex items-center gap-1.5 font-semibold text-ink-primary font-mono text-[11px]">
                 <Shield className="w-3.5 h-3.5 text-primary" />
-                <span>Buyer Protection & Refund Policy</span>
+                <span>Buyer Protection Policy</span>
               </div>
               <p className="text-[11px] leading-relaxed">
                 Subject to our verified refund policy. Digital downloads are non-refundable once the file is downloaded, unless defective.{" "}
                 <Link href="/refund-policy" className="text-primary hover:underline font-medium">
-                  Read live policy terms
+                  Read terms
                 </Link>
                 .
               </p>

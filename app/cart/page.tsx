@@ -23,10 +23,10 @@ export default function CartPage() {
   const total = subtotal;
 
   return (
-    <div className="py-16 max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+    <div className="py-8 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-10">
       
       <div className="space-y-2">
-        <h1 className="text-3xl font-display font-extrabold text-ink-primary tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-ink-primary tracking-tight">
           Your Shopping Cart
         </h1>
         <p className="text-xs text-ink-muted">
@@ -34,18 +34,18 @@ export default function CartPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         
         {/* Cart Item List */}
         <div className="lg:col-span-7 space-y-4">
           {cartItems.map((item) => (
             <div
               key={item.id}
-              className="p-5 rounded-2xl bg-white border border-border shadow-sm flex items-center justify-between gap-4"
+              className="p-4 sm:p-5 rounded-2xl bg-white border border-border shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-surface-muted flex items-center justify-center shrink-0">
-                  <FileText className="w-6 h-6 text-primary" />
+              <div className="flex items-start sm:items-center gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-surface-muted flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 </div>
                 <div className="space-y-0.5">
                   <span className="text-[10px] font-mono text-ink-muted uppercase">
@@ -57,7 +57,7 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <div className="text-right shrink-0">
+              <div className="text-left sm:text-right shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-border/60">
                 <span className="text-base font-display font-bold text-ink-primary block">
                   {item.priceFormatted}
                 </span>
@@ -68,7 +68,7 @@ export default function CartPage() {
         </div>
 
         {/* Order Summary & Checkout CTA */}
-        <div className="lg:col-span-5 p-6 rounded-2xl bg-white border border-border shadow-lg space-y-6">
+        <div className="lg:col-span-5 p-5 sm:p-6 rounded-2xl bg-white border border-border shadow-lg space-y-5 sm:space-y-6">
           <h2 className="text-base font-display font-bold text-ink-primary">
             Order Summary
           </h2>

@@ -46,28 +46,28 @@ export default function SubjectFeatureBlock({ config }: { config: SubjectFeature
   ];
 
   return (
-    <section className="py-24 bg-surface-base border-b border-border">
+    <section className="py-14 sm:py-20 lg:py-24 bg-surface-base border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="max-w-3xl mb-16 space-y-4">
+        <div className="max-w-3xl mb-10 sm:mb-16 space-y-3 sm:space-y-4">
           <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
             Deep Subject Architecture
           </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
             Designed for Scientific Rigor & Comprehension
           </h2>
-          <p className="text-base text-ink-muted">
+          <p className="text-sm sm:text-base text-ink-muted">
             Each subject is structured from foundational postulates up to advanced application problems, ensuring you understand the fundamental "why" behind every formula.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {subjects.map((s) => {
             const Icon = s.icon;
             return (
               <div
                 key={s.slug}
-                className={`p-8 rounded-2xl bg-white border border-border ${s.borderHover} shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between`}
+                className={`p-6 sm:p-8 rounded-2xl bg-white border border-border ${s.borderHover} shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between`}
               >
                 <div className="space-y-6">
                   <div className={`w-14 h-14 rounded-xl ${s.accentBg} flex items-center justify-center`}>

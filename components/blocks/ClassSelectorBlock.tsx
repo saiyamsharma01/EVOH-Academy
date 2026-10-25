@@ -15,27 +15,27 @@ interface ClassSelectorConfig {
 
 export default function ClassSelectorBlock({ config }: { config: ClassSelectorConfig }) {
   return (
-    <section className="py-20 bg-surface-base scientific-grid border-b border-border">
+    <section className="py-14 sm:py-20 bg-surface-base scientific-grid border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 space-y-3 sm:space-y-4">
           <h2 className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
             Curriculum Portals
           </h2>
-          <h3 className="text-3xl sm:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
             Targeted Learning for High School Science
           </h3>
-          <p className="text-base text-ink-muted">
+          <p className="text-sm sm:text-base text-ink-muted">
             Step directly into syllabus-aligned study modules crafted specifically for Class 11 foundational concepts and Class 12 board & entrance mastery.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {config.classes.map((cls) => (
             <Link
               key={cls.level}
               href={cls.link}
-              className="group relative p-8 rounded-2xl bg-white border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="group relative p-6 sm:p-8 rounded-2xl bg-white border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -48,7 +48,7 @@ export default function ClassSelectorBlock({ config }: { config: ClassSelectorCo
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="text-2xl font-display font-bold text-ink-primary group-hover:text-primary transition-colors">
+                  <h4 className="text-xl sm:text-2xl font-display font-bold text-ink-primary group-hover:text-primary transition-colors">
                     {cls.title}
                   </h4>
                   <p className="text-sm text-ink-muted leading-relaxed">
@@ -56,16 +56,16 @@ export default function ClassSelectorBlock({ config }: { config: ClassSelectorCo
                   </p>
                 </div>
 
-                {/* Subject highlights */}
-                <div className="flex items-center gap-6 pt-4 border-t border-border/60 text-xs font-mono text-ink-muted">
+                {/* Subject highlights with wrap protection */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-6 pt-4 border-t border-border/60 text-xs font-mono text-ink-muted">
                   <span className="flex items-center gap-1.5">
-                    <Atom className="w-4 h-4 text-primary" /> Physics
+                    <Atom className="w-4 h-4 text-primary shrink-0" /> Physics
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <FlaskConical className="w-4 h-4 text-accent-cyan" /> Chemistry
+                    <FlaskConical className="w-4 h-4 text-accent-cyan shrink-0" /> Chemistry
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Binary className="w-4 h-4 text-accent-violet" /> Mathematics
+                    <Binary className="w-4 h-4 text-accent-violet shrink-0" /> Mathematics
                   </span>
                 </div>
               </div>

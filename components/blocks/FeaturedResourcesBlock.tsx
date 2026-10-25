@@ -62,32 +62,32 @@ export default function FeaturedResourcesBlock({ config }: { config: FeaturedRes
   ];
 
   return (
-    <section className="py-24 bg-surface-muted border-b border-border">
+    <section className="py-14 sm:py-20 lg:py-24 bg-surface-muted border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="space-y-4 max-w-2xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 gap-4 sm:gap-6">
+          <div className="space-y-3 sm:space-y-4 max-w-2xl">
             <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
               Curated Science Notes
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
               {config.title || "Featured Study Notes"}
             </h2>
-            <p className="text-base text-ink-muted">
+            <p className="text-sm sm:text-base text-ink-muted">
               Explore meticulously authored PDF resources with verified derivations, clear diagrams, and step-by-step problem blueprints.
             </p>
           </div>
 
           <Link
             href="/notes"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-hover group self-start md:self-auto"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-primary hover:text-primary-hover group self-start md:self-auto py-1"
           >
             <span>View Full Notes Marketplace</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {resources.map((item) => (
             <div
               key={item.id}

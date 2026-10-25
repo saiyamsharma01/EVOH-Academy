@@ -130,8 +130,8 @@ export default function ReaderPage({ params }: ReaderProps) {
     <div className="min-h-screen bg-surface-dark flex flex-col text-slate-200">
       
       {/* Top Reader Toolbar */}
-      <header className="h-16 px-4 sm:px-6 bg-surface-dark-card border-b border-white/10 flex items-center justify-between z-20">
-        <div className="flex items-center gap-3">
+      <header className="h-14 sm:h-16 px-3 sm:px-6 bg-surface-dark-card border-b border-white/10 flex items-center justify-between z-20">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/dashboard/library"
             className="flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-white px-2 py-1.5 rounded-lg hover:bg-white/5 transition-colors"
@@ -144,11 +144,12 @@ export default function ReaderPage({ params }: ReaderProps) {
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
             title="Toggle Thumbnails"
+            aria-label="Toggle Page Thumbnails"
           >
             {sidebarOpen ? <PanelLeftClose className="w-4 h-4" /> : <PanelLeftOpen className="w-4 h-4" />}
           </button>
-          <span className="text-sm font-display font-bold text-white truncate max-w-[200px] sm:max-w-md">
-            Class 11 Physics: Kinematics & 2D Vectors
+          <span className="text-xs sm:text-sm font-display font-bold text-white truncate max-w-[130px] sm:max-w-md">
+            Class 11 Physics: Kinematics
           </span>
         </div>
 
@@ -163,8 +164,8 @@ export default function ReaderPage({ params }: ReaderProps) {
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="px-1.5">
-              {currentPage} / {totalPages}
+            <span className="px-1 text-[11px] sm:text-xs">
+              {currentPage}/{totalPages}
             </span>
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
@@ -176,40 +177,59 @@ export default function ReaderPage({ params }: ReaderProps) {
             </button>
           </div>
 
-          <div className="hidden sm:flex items-center gap-1 bg-surface-dark px-2 py-1 rounded-lg border border-white/10">
+          <div className="flex items-center gap-1 bg-surface-dark px-1.5 sm:px-2 py-1 rounded-lg border border-white/10 text-xs">
             <button
               onClick={() => setZoom((z) => Math.max(70, z - 10))}
-              className="p-1.5 text-slate-400 hover:text-white"
+              className="p-1 text-slate-400 hover:text-white"
               aria-label="Zoom out"
             >
-              <ZoomOut className="w-4 h-4" />
+              <ZoomOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
-            <span className="text-xs font-mono text-slate-300 px-1">{zoom}%</span>
+            <span className="text-[11px] sm:text-xs font-mono text-slate-300 px-0.5 sm:px-1">{zoom}%</span>
             <button
               onClick={() => setZoom((z) => Math.min(140, z + 10))}
-              className="p-1.5 text-slate-400 hover:text-white"
+              className="p-1 text-slate-400 hover:text-white"
               aria-label="Zoom in"
             >
-              <ZoomIn className="w-4 h-4" />
+              <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </div>
         </div>
       </header>
 
       {/* Main Body with Sidebar Drawer and Canvas */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
         
-        {/* Thumbnails Sidebar */}
+        {/* Mobile Sidebar Overlay Drawer */}
         {sidebarOpen && (
-          <aside className="w-56 bg-surface-dark/95 border-r border-white/10 flex flex-col p-4 space-y-3 overflow-y-auto shrink-0 hidden md:flex">
-            <span className="text-[11px] font-mono uppercase text-slate-400 tracking-wider">
-              Document Pages
-            </span>
+          <div
+            className="fixed inset-0 z-30 bg-black/60 backdrop-blur-xs md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
+        {/* Thumbnails Sidebar (Responsive: sliding drawer on mobile, static on desktop) */}
+        {sidebarOpen && (
+          <aside className="fixed inset-y-0 left-0 z-40 w-64 bg-surface-dark border-r border-white/10 flex flex-col p-4 space-y-3 overflow-y-auto shrink-0 md:static md:w-56 md:z-auto">
+            <div className="flex items-center justify-between pb-2 border-b border-white/10">
+              <span className="text-[11px] font-mono uppercase text-slate-400 tracking-wider">
+                Document Pages
+              </span>
+              <button
+                onClick={() => setSidebarOpen(false)}
+                className="md:hidden text-xs font-mono text-slate-400 hover:text-white px-2 py-1"
+              >
+                Close ✕
+              </button>
+            </div>
             <div className="space-y-2">
               {[1, 2, 3, 4, 5].map((pageNum) => (
                 <button
                   key={pageNum}
-                  onClick={() => setCurrentPage(pageNum)}
+                  onClick={() => {
+                    setCurrentPage(pageNum);
+                    if (window.innerWidth < 768) setSidebarOpen(false);
+                  }}
                   className={`w-full p-2.5 rounded-xl border text-left transition-all ${
                     currentPage === pageNum
                       ? "border-primary bg-primary/20 text-white"
@@ -230,38 +250,35 @@ export default function ReaderPage({ params }: ReaderProps) {
         )}
 
         {/* Main Document View Canvas */}
-        <main className="flex-1 overflow-auto p-4 sm:p-8 flex items-center justify-center relative">
+        <main className="flex-1 overflow-auto p-2 sm:p-6 lg:p-8 flex items-start sm:items-center justify-center relative">
           <div
-            className="relative bg-white text-slate-900 rounded-xl shadow-2xl p-8 sm:p-14 max-w-3xl w-full min-h-[720px] aspect-[1/1.414] overflow-hidden select-none transition-transform origin-top flex flex-col justify-between"
+            className="relative bg-white text-slate-900 rounded-xl shadow-2xl p-5 sm:p-12 lg:p-14 max-w-3xl w-full min-h-[500px] sm:min-h-[720px] overflow-hidden select-none transition-transform origin-top flex flex-col justify-between my-2"
             style={{ transform: `scale(${zoom / 100})` }}
           >
             {/* Dynamic Watermark Overlay across document per PRD Sec 12.7 */}
-            <div className="absolute inset-0 flex flex-col justify-around pointer-events-none opacity-15 -rotate-12 text-center select-none">
-              <div className="text-xs font-mono font-bold tracking-widest text-slate-500">
+            <div className="absolute inset-0 flex flex-col justify-around pointer-events-none opacity-10 sm:opacity-15 -rotate-12 text-center select-none overflow-hidden">
+              <div className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-slate-500 truncate px-4">
                 {watermarkStamp}
               </div>
-              <div className="text-xs font-mono font-bold tracking-widest text-slate-500">
+              <div className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-slate-500 truncate px-4">
                 {watermarkStamp}
               </div>
-              <div className="text-xs font-mono font-bold tracking-widest text-slate-500">
-                {watermarkStamp}
-              </div>
-              <div className="text-xs font-mono font-bold tracking-widest text-slate-500">
+              <div className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-slate-500 truncate px-4">
                 {watermarkStamp}
               </div>
             </div>
 
             {/* Reader Header */}
-            <div className="space-y-6 relative z-10 text-xs sm:text-sm font-sans leading-relaxed text-slate-800">
-              <div className="flex items-center justify-between pb-4 border-b border-slate-200">
-                <span className="font-mono text-xs text-primary font-bold">EVOH ACADEMY • CLASS 11 PHYSICS</span>
-                <span className="font-mono text-xs text-slate-400">PAGE {currentPage} OF {totalPages}</span>
+            <div className="space-y-4 sm:space-y-6 relative z-10 text-xs sm:text-sm font-sans leading-relaxed text-slate-800">
+              <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-200 text-[10px] sm:text-xs font-mono">
+                <span className="text-primary font-bold">EVOH ACADEMY • CLASS 11</span>
+                <span className="text-slate-400 font-bold">PAGE {currentPage} OF {totalPages}</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-display font-extrabold text-slate-900">
+              <h2 className="text-lg sm:text-2xl font-display font-extrabold text-slate-900 leading-snug">
                 {activePageData.title}
               </h2>
-              <p className="text-xs font-mono text-slate-500">
+              <p className="text-[11px] sm:text-xs font-mono text-slate-500">
                 {activePageData.subtitle}
               </p>
 
@@ -269,8 +286,8 @@ export default function ReaderPage({ params }: ReaderProps) {
             </div>
 
             {/* Reader Footer Stamp */}
-            <div className="pt-6 border-t border-slate-200 relative z-10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span>Verified CBSE / NCERT Curriculum Standard</span>
+            <div className="pt-4 sm:pt-6 border-t border-slate-200 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[10px] sm:text-[11px] font-mono text-slate-400">
+              <span>Verified CBSE / NCERT Standard</span>
               <span>Doc Hash: #EVOH-KINE-V12-P{currentPage}</span>
             </div>
           </div>

@@ -38,12 +38,12 @@ export default function AdminDashboardPage() {
   ];
 
   return (
-    <div className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
       
       {/* Admin Shell Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-8 rounded-3xl bg-surface-dark text-white border border-white/10 shadow-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-surface-dark text-white border border-white/10 shadow-xl">
         <div className="space-y-1">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-primary/20 text-accent-cyan border border-accent-cyan/30">
               ROLE: SUPER_ADMIN
             </span>
@@ -51,7 +51,7 @@ export default function AdminDashboardPage() {
               TEST MODE ACTIVE
             </span>
           </div>
-          <h1 className="text-3xl font-display font-extrabold tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight">
             EVOH Content Management System
           </h1>
           <p className="text-xs text-slate-300 font-sans">
@@ -59,17 +59,17 @@ export default function AdminDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 self-start sm:self-auto">
           <Link
             href="/admin/settings"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-md transition-all"
+            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-md transition-all"
           >
             <Settings className="w-4 h-4" />
             <span>Brand Settings</span>
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold border border-white/20 transition-colors"
+            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold border border-white/20 transition-colors"
           >
             <span>Live Site ↗</span>
           </Link>
@@ -171,27 +171,27 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* RBAC Permission Matrix Preview for SUPER_ADMIN (PRD Sec 3.2) */}
-      <div className="p-8 rounded-3xl bg-white border border-border shadow-sm space-y-6">
-        <div className="flex items-center justify-between">
+      <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-border shadow-sm space-y-5 sm:space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="text-lg font-display font-bold text-ink-primary flex items-center gap-2">
-              <Shield className="w-5 h-5 text-primary" />
+            <h3 className="text-base sm:text-lg font-display font-bold text-ink-primary flex items-center gap-2">
+              <Shield className="w-5 h-5 text-primary shrink-0" />
               <span>System Role & Permission Matrix (Live Enforced)</span>
             </h3>
             <p className="text-xs text-ink-muted mt-0.5">
               Centralized authorization matrix defined in <code>server/auth/permissions.ts</code> and enforced via <code>can()</code>.
             </p>
           </div>
-          <span className="text-xs font-mono text-ink-muted">6 Defined Roles</span>
+          <span className="text-xs font-mono text-ink-muted shrink-0">6 Defined Roles</span>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs font-mono border-collapse">
+        <div className="overflow-x-auto -mx-2 sm:mx-0">
+          <table className="w-full min-w-[520px] text-left text-xs font-mono border-collapse">
             <thead>
               <tr className="border-b border-border bg-surface-muted">
                 <th className="p-3 font-bold text-ink-primary">Role Name</th>
-                <th className="p-3 font-bold text-ink-primary">Assigned Permissions Count</th>
-                <th className="p-3 font-bold text-ink-primary">High-Privilege Access Scope</th>
+                <th className="p-3 font-bold text-ink-primary">Permissions</th>
+                <th className="p-3 font-bold text-ink-primary">High-Privilege Scope</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">

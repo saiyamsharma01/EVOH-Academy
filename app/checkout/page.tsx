@@ -80,10 +80,10 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="py-16 max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+    <div className="py-8 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-10">
       
       <div className="space-y-2">
-        <h1 className="text-3xl font-display font-extrabold text-ink-primary tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-ink-primary tracking-tight">
           Secure Checkout
         </h1>
         <p className="text-xs text-ink-muted">
@@ -91,12 +91,12 @@ export default function CheckoutPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         
         {/* Left Column: Customer Info & Place of Supply */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="p-8 rounded-2xl bg-white border border-border shadow-sm space-y-5">
-            <h2 className="text-lg font-display font-bold text-ink-primary">
+        <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+          <div className="p-5 sm:p-8 rounded-2xl bg-white border border-border shadow-sm space-y-4 sm:space-y-5">
+            <h2 className="text-base sm:text-lg font-display font-bold text-ink-primary">
               1. Student Details & Billing State
             </h2>
 
@@ -144,19 +144,21 @@ export default function CheckoutPage() {
             </div>
           </div>
 
-          {/* Coupon Code Input */}
-          <form onSubmit={handleApplyCoupon} className="p-6 rounded-2xl bg-white border border-border shadow-sm flex items-center gap-3">
-            <Tag className="w-5 h-5 text-primary shrink-0" />
-            <input
-              type="text"
-              value={couponCode}
-              onChange={(e) => setCouponCode(e.target.value)}
-              placeholder="Coupon Code (e.g. EVOH50)"
-              className="flex-1 px-3 py-2 rounded-xl border border-border text-xs uppercase font-mono outline-none"
-            />
+          {/* Coupon Code Input with Mobile Stack Safety */}
+          <form onSubmit={handleApplyCoupon} className="p-4 sm:p-6 rounded-2xl bg-white border border-border shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="flex items-center gap-2 flex-1">
+              <Tag className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
+              <input
+                type="text"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+                placeholder="Coupon Code (e.g. EVOH50)"
+                className="w-full px-3 py-2 rounded-xl border border-border text-xs uppercase font-mono outline-none"
+              />
+            </div>
             <button
               type="submit"
-              className="py-2 px-4 rounded-xl bg-surface-muted hover:bg-surface-base border border-border text-xs font-semibold text-ink-primary"
+              className="py-2.5 px-4 rounded-xl bg-surface-muted hover:bg-surface-base border border-border text-xs font-semibold text-ink-primary shrink-0"
             >
               Apply
             </button>
@@ -164,7 +166,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Right Column: Server-Calculated Tax Summary */}
-        <div className="lg:col-span-5 p-8 rounded-3xl bg-white border border-border shadow-xl space-y-6">
+        <div className="lg:col-span-5 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-border shadow-xl space-y-5 sm:space-y-6">
           <h2 className="text-lg font-display font-bold text-ink-primary">
             Payment Breakdown
           </h2>
