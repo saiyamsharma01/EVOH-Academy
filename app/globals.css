@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Warm Ivory / Editorial Surfaces (PRD Sec 6) */
+  --surface-base: 40 40% 98%;       /* #FDFBF7 */
+  --surface-muted: 40 25% 94%;      /* #F5F2EB */
+  --surface-dark: 224 59% 10%;      /* #0A1128 */
+  --surface-dark-card: 226 42% 16%; /* #16203B */
+
+  /* Academic Cobalt & High Contrast Ink */
+  --primary: 224 76% 48%;           /* #1D4ED8 */
+  --primary-hover: 221 83% 53%;     /* #2563EB */
+  --accent-cyan: 189 94% 43%;       /* #06B6D4 */
+  --accent-violet: 239 84% 67%;     /* #6366F1 */
+
+  --text-primary: 222 47% 11%;      /* #0F172A */
+  --text-muted: 215 16% 47%;        /* #64748B */
+
+  --background: var(--surface-base);
+  --foreground: var(--text-primary);
+
+  --border: 40 20% 88%;
+  --input: 40 20% 88%;
+  --ring: var(--primary);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: var(--surface-dark);
+  --foreground: 210 40% 98%;
+  --border: 226 40% 20%;
+  --input: 226 40% 20%;
+}
+
+body {
+  background-color: hsl(var(--surface-base));
+  color: hsl(var(--text-primary));
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scientific Grid & Mathematical Visual Rhythm */
+.scientific-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+.scientific-grid-dark {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Subtle Glassmorphism for floating controls */
+.editorial-glass {
+  background: rgba(253, 251, 247, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.dark-glass {
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scientific Glow & Accents */
+.cyan-glow {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+}
+
+.cobalt-glow {
+  box-shadow: 0 0 30px rgba(29, 78, 216, 0.2);
+}
