@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Atom, Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Atom, LayoutDashboard, LogOut, Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
 
 interface NavItemData {
   id: string;
@@ -27,12 +28,40 @@ export default function Navbar({
   ],
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    // Check current active user
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+    });
+
+    // Listen for auth state changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  const handleSignOut = async () => {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    await fetch("/api/auth/logout", { method: "POST" }).catch(() => {});
+    setUser(null);
+    window.location.href = "/login";
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full editorial-glass border-b border-border transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
-        
         {/* Brand Wordmark */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent-blue flex items-center justify-center text-white shadow-md shadow-primary/25 group-hover:scale-105 transition-transform">
@@ -89,20 +118,40 @@ export default function Navbar({
             <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
           </Link>
 
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-border bg-white text-xs font-semibold text-ink-primary hover:border-primary/40 hover:text-primary transition-colors"
-          >
-            <User className="w-3.5 h-3.5 text-primary" />
-            <span>Student Login</span>
-          </Link>
-
-          <Link
-            href="/notes"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
-          >
-            <span>Get Notes</span>
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary/10 text-primary border border-primary/20 text-xs font-semibold hover:bg-primary/20 transition-colors"
+              >
+                <LayoutDashboard className="w-3.5 h-3.5" />
+                <span>Dashboard</span>
+              </Link>
+              <button
+                onClick={handleSignOut}
+                title="Sign Out"
+                className="p-2 rounded-lg text-ink-muted hover:text-red-600 hover:bg-red-50 transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Link
+                href="/login"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-border bg-white text-xs font-semibold text-ink-primary hover:border-primary/40 hover:text-primary transition-colors"
+              >
+                <User className="w-3.5 h-3.5 text-primary" />
+                <span>Student Login</span>
+              </Link>
+              <Link
+                href="/register"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+              >
+                <span>Register</span>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -123,7 +172,6 @@ export default function Navbar({
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-
       </div>
 
       {/* Mobile Drawer */}
@@ -151,20 +199,43 @@ export default function Navbar({
             })}
           </nav>
           <div className="pt-4 border-t border-border flex flex-col gap-2.5">
-            <Link
-              href="/login"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2.5 rounded-lg border border-border text-sm font-semibold text-ink-primary"
-            >
-              Student Login
-            </Link>
-            <Link
-              href="/notes"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2.5 rounded-lg bg-primary text-white text-sm font-semibold shadow"
-            >
-              Browse Notes
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href="/dashboard"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full text-center py-2.5 rounded-lg bg-primary text-white text-sm font-semibold shadow"
+                >
+                  Go to Student Dashboard
+                </Link>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleSignOut();
+                  }}
+                  className="w-full text-center py-2 rounded-lg border border-red-200 text-red-600 text-sm font-semibold"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full text-center py-2.5 rounded-lg border border-border text-sm font-semibold text-ink-primary"
+                >
+                  Student Login
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full text-center py-2.5 rounded-lg bg-primary text-white text-sm font-semibold shadow"
+                >
+                  Create Account
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}
