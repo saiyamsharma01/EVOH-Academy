@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     let authUserId: string | null = null;
 
-    // Try creating user via Admin Client first for instant confirmation
+    // 1. Try creating user via Admin Client first for instant confirmation
     try {
       const adminClient = createAdminClient();
       const { data: adminUser, error: adminError } =
@@ -53,10 +53,12 @@ export async function POST(request: NextRequest) {
         });
 
       if (adminError) {
-        // If user already exists in Supabase
-        if (adminError.message?.toLowerCase().includes("already registered") || adminError.message?.toLowerCase().includes("already exists")) {
+        if (
+          adminError.message?.toLowerCase().includes("already registered") ||
+          adminError.message?.toLowerCase().includes("already exists")
+        ) {
           return NextResponse.json(
-            { error: "An account with this email already exists. Please log in." },
+            { error: "An account with this email already exists. Please sign in." },
             { status: 409 }
           );
         }
@@ -65,7 +67,7 @@ export async function POST(request: NextRequest) {
 
       authUserId = adminUser?.user?.id ?? null;
     } catch (adminErr: any) {
-      // Fallback to standard Supabase sign-up
+      // 2. Fallback to standard Supabase sign-up
       const supabase = await createClient();
       const { data: signUpData, error: signUpError } =
         await supabase.auth.signUp({
@@ -91,12 +93,12 @@ export async function POST(request: NextRequest) {
 
     if (!authUserId) {
       return NextResponse.json(
-        { error: "Failed to create user account. Please try again." },
+        { error: "Failed to create user account. Please check your credentials." },
         { status: 500 }
       );
     }
 
-    // Sync into Prisma PostgreSQL Database
+    // 3. Sync into Prisma PostgreSQL Database
     const dbUser = await syncUserFromAuth({
       authUserId,
       email,
@@ -117,8 +119,18 @@ export async function POST(request: NextRequest) {
     });
   } catch (error: any) {
     console.error("Registration error:", error);
+    
+    // Provide clean, human-readable error instead of raw stack traces
+    const msg = error?.message || "";
+    if (msg.includes("prisma") || msg.includes("database") || msg.includes("Environment variable")) {
+      return NextResponse.json(
+        { error: "Database connection issue. Please restart your dev server and try again." },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json(
-      { error: error.message || "An unexpected error occurred during registration" },
+      { error: msg || "An unexpected error occurred during registration" },
       { status: 500 }
     );
   }

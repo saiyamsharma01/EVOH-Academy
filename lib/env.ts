@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+// Automatically load local .env file if DATABASE_URL is not yet populated
+if (!process.env.DATABASE_URL && typeof process.loadEnvFile === "function") {
+  try {
+    process.loadEnvFile();
+  } catch {
+    // Ignore if running in production where environment variables are injected directly
+  }
+}
+
 const envSchema = z.object({
   DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
   DIRECT_URL: z.string().optional(),
