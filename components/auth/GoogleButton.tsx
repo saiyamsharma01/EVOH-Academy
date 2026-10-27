@@ -30,6 +30,25 @@ export default function GoogleButton({
         redirectTo
       )}`;
 
+      // 1. Verify if Google provider is enabled in Supabase to prevent raw JSON error screen
+      try {
+        const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+        const settingsRes = await fetch(`${supabaseUrl}/auth/v1/settings`, {
+          headers: { apikey: anonKey },
+        });
+        if (settingsRes.ok) {
+          const settings = await settingsRes.json();
+          if (settings?.external?.google === false) {
+            setShowConfigModal(true);
+            setLoading(false);
+            return;
+          }
+        }
+      } catch (settingsErr) {
+        console.warn("Supabase settings pre-check skipped:", settingsErr);
+      }
+
+      // 2. Initiate Google OAuth redirect
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
