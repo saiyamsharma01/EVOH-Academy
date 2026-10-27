@@ -47,30 +47,30 @@ export default function CheckoutPage() {
   if (completed) {
     return (
       <div className="py-20 max-w-lg mx-auto px-4 text-center space-y-6">
-        <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto shadow-lg shadow-emerald-950/50">
+        <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto shadow-xs">
           <Check className="w-8 h-8" />
         </div>
         <div className="space-y-2">
-          <h1 className="text-3xl font-display font-extrabold text-white">
+          <h1 className="text-3xl font-display font-extrabold text-slate-900">
             Payment Successful!
           </h1>
-          <p className="text-xs font-mono text-cyan-400">
+          <p className="text-xs font-semibold text-blue-700">
             Order Reference: EVOH-2026-00042 • Invoice Issued
           </p>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-600">
             Your entitlements have been activated. Your watermarked PDF is ready in your student library.
           </p>
         </div>
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/dashboard/library"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-lg shadow-cyan-500/25"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs"
           >
             Go to My Library
           </Link>
           <Link
             href="/dashboard/purchases"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-white"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700"
           >
             Download Invoice PDF
           </Link>
@@ -80,13 +80,13 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="py-8 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-10">
+    <div className="py-8 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
       
       <div className="space-y-2">
-        <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 tracking-tight">
           Secure Checkout
         </h1>
-        <p className="text-xs text-slate-400">
+        <p className="text-xs sm:text-sm text-slate-600">
           All orders are verified and fulfilled with dynamic student watermarking and sequential tax invoicing.
         </p>
       </div>
@@ -95,43 +95,43 @@ export default function CheckoutPage() {
         
         {/* Left Column: Customer Info & Place of Supply */}
         <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-          <div className="p-5 sm:p-8 rounded-2xl bg-surface-card/75 border border-white/10 shadow-lg space-y-4 sm:space-y-5 backdrop-blur-md">
-            <h2 className="text-base sm:text-lg font-display font-bold text-white">
+          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4 sm:space-y-5">
+            <h2 className="text-base sm:text-lg font-display font-bold text-slate-900">
               1. Student Details & Billing State
             </h2>
 
-            <div className="space-y-3 text-xs">
+            <div className="space-y-3.5 text-xs">
               <div>
-                <label className="font-mono text-slate-300 font-semibold block mb-1">
-                  Student Name
+                <label className="text-slate-700 font-medium block mb-1">
+                  Student Full Name
                 </label>
                 <input
                   type="text"
                   defaultValue="Aarav Sharma"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-surface-muted/90 text-white text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                 />
               </div>
 
               <div>
-                <label className="font-mono text-slate-300 font-semibold block mb-1">
+                <label className="text-slate-700 font-medium block mb-1">
                   Email (Receives Invoices & Download Links)
                 </label>
                 <input
                   type="email"
                   defaultValue="aarav@example.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-surface-muted/90 text-white text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                 />
               </div>
 
               {/* Place of Supply State Selector for GST Math */}
               <div>
-                <label className="font-mono text-slate-300 font-semibold block mb-1">
+                <label className="text-slate-700 font-medium block mb-1">
                   Billing State (Determines CGST+SGST vs IGST)
                 </label>
                 <select
                   value={billingState}
                   onChange={(e) => setBillingState(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-surface-muted/90 text-white text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                 >
                   <option value="Delhi">Delhi (Intra-state: CGST + SGST)</option>
                   <option value="Maharashtra">Maharashtra (Inter-state: IGST)</option>
@@ -144,21 +144,21 @@ export default function CheckoutPage() {
             </div>
           </div>
 
-          {/* Coupon Code Input with Mobile Stack Safety */}
-          <form onSubmit={handleApplyCoupon} className="p-4 sm:p-6 rounded-2xl bg-surface-card/75 border border-white/10 shadow-lg flex flex-col sm:flex-row items-stretch sm:items-center gap-3 backdrop-blur-md">
+          {/* Coupon Code Input */}
+          <form onSubmit={handleApplyCoupon} className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <div className="flex items-center gap-2 flex-1">
-              <Tag className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 shrink-0" />
+              <Tag className="w-4 h-4 text-slate-500 shrink-0" />
               <input
                 type="text"
                 value={couponCode}
                 onChange={(e) => setCouponCode(e.target.value)}
                 placeholder="Coupon Code (e.g. EVOH50)"
-                className="w-full px-3 py-2 rounded-xl border border-white/10 bg-surface-muted/90 text-white placeholder-slate-500 text-xs uppercase font-mono outline-none focus:border-cyan-400"
+                className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder-slate-400 text-xs uppercase outline-none focus:border-blue-600"
               />
             </div>
             <button
               type="submit"
-              className="py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-semibold text-white shrink-0 transition-colors"
+              className="py-2.5 px-4 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-800 shrink-0 transition-colors"
             >
               Apply
             </button>
@@ -166,21 +166,21 @@ export default function CheckoutPage() {
         </div>
 
         {/* Right Column: Server-Calculated Tax Summary */}
-        <div className="lg:col-span-5 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-surface-card/85 border border-white/10 shadow-2xl space-y-5 sm:space-y-6 backdrop-blur-md">
-          <h2 className="text-lg font-display font-bold text-white">
+        <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-6">
+          <h2 className="text-lg font-display font-bold text-slate-900">
             Payment Breakdown
           </h2>
 
-          <div className="space-y-2.5 text-xs font-mono text-slate-400">
+          <div className="space-y-2.5 text-xs text-slate-600">
             <div className="flex justify-between">
               <span>Catalog Subtotal:</span>
-              <span className="text-white font-bold">
+              <span className="text-slate-900 font-semibold">
                 ₹{subtotalPaise / 100}
               </span>
             </div>
 
             {discountPaise > 0 && (
-              <div className="flex justify-between text-emerald-400 font-bold">
+              <div className="flex justify-between text-emerald-600 font-semibold">
                 <span>Coupon Discount:</span>
                 <span>-₹{discountPaise / 100}</span>
               </div>
@@ -188,53 +188,53 @@ export default function CheckoutPage() {
 
             <div className="flex justify-between">
               <span>Taxable Base Value:</span>
-              <span className="text-slate-200">₹{(taxResult.taxableValueInPaise / 100).toFixed(2)}</span>
+              <span className="text-slate-800">₹{(taxResult.taxableValueInPaise / 100).toFixed(2)}</span>
             </div>
 
             {taxResult.isIntraState ? (
               <>
                 <div className="flex justify-between">
                   <span>CGST (9%):</span>
-                  <span className="text-slate-200">₹{(taxResult.cgstInPaise / 100).toFixed(2)}</span>
+                  <span className="text-slate-800">₹{(taxResult.cgstInPaise / 100).toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>SGST (9%):</span>
-                  <span className="text-slate-200">₹{(taxResult.sgstInPaise / 100).toFixed(2)}</span>
+                  <span className="text-slate-800">₹{(taxResult.sgstInPaise / 100).toFixed(2)}</span>
                 </div>
               </>
             ) : (
               <div className="flex justify-between">
                 <span>IGST (18%):</span>
-                <span className="text-slate-200">₹{(taxResult.igstInPaise / 100).toFixed(2)}</span>
+                <span className="text-slate-800">₹{(taxResult.igstInPaise / 100).toFixed(2)}</span>
               </div>
             )}
 
-            <div className="pt-3 border-t border-white/10 flex justify-between text-base font-bold text-white font-display">
+            <div className="pt-3 border-t border-slate-100 flex justify-between text-base font-bold text-slate-900 font-display">
               <span>Total Amount:</span>
-              <span className="text-cyan-400 font-extrabold text-xl">₹{(taxResult.totalInPaise / 100).toFixed(2)}</span>
+              <span className="text-blue-700 font-extrabold text-xl">₹{(taxResult.totalInPaise / 100).toFixed(2)}</span>
             </div>
           </div>
 
-          {/* Mandatory acceptance checkbox per PRD Sec 27 */}
-          <div className="pt-2 flex items-start gap-2.5 text-[11px] text-slate-400">
+          {/* Mandatory acceptance checkbox */}
+          <div className="pt-2 flex items-start gap-2.5 text-xs text-slate-600">
             <input
               type="checkbox"
               id="terms-check"
               checked={termsAccepted}
               onChange={(e) => setTermsAccepted(e.target.checked)}
-              className="mt-0.5 rounded border-white/20 bg-surface-muted text-cyan-500 focus:ring-cyan-400"
+              className="mt-0.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
             />
             <label htmlFor="terms-check" className="leading-tight cursor-pointer">
               I agree to the{" "}
-              <Link href="/terms" target="_blank" className="text-cyan-400 hover:underline">
+              <Link href="/terms" target="_blank" className="text-blue-600 hover:underline font-medium">
                 Terms of Service
               </Link>
               ,{" "}
-              <Link href="/digital-delivery-policy" target="_blank" className="text-cyan-400 hover:underline">
+              <Link href="/digital-delivery-policy" target="_blank" className="text-blue-600 hover:underline font-medium">
                 Watermark Policy
               </Link>
               , and{" "}
-              <Link href="/refund-policy" target="_blank" className="text-cyan-400 hover:underline">
+              <Link href="/refund-policy" target="_blank" className="text-blue-600 hover:underline font-medium">
                 Refund Terms
               </Link>
               .
@@ -244,14 +244,14 @@ export default function CheckoutPage() {
           <button
             onClick={handlePayment}
             disabled={processing}
-            className="w-full py-4 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 hover:-translate-y-0.5"
+            className="w-full py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <Lock className="w-4 h-4" />
             <span>{processing ? "Processing via Razorpay..." : `Pay ₹${(taxResult.totalInPaise / 100).toFixed(2)}`}</span>
           </button>
 
-          <div className="text-center text-[10px] font-mono text-slate-500 flex items-center justify-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="text-center text-xs text-slate-500 flex items-center justify-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
             <span>Razorpay Sandbox Integration • Test Mode</span>
           </div>
         </div>

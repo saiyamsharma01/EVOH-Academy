@@ -24,7 +24,7 @@ const SUBJECT_DETAILS: Record<
     headline: "Understand Physical Reality through Mathematical Derivations",
     description:
       "From basic dimensional analysis to electromagnetic waves. Every law is broken down into its fundamental postulates, step-by-step mathematical steps, and experimental verification.",
-    color: "text-primary",
+    color: "text-blue-600",
     icon: Atom,
     chaptersClass11: [
       "Physical World & Measurement",
@@ -51,8 +51,8 @@ const SUBJECT_DETAILS: Record<
     name: "Chemistry",
     headline: "Master Molecular Orbitals and Organic Reaction Pathways",
     description:
-      "A complete visual and conceptual guide to chemical behavior. Focuses on reaction mechanisms with clear electron push arrows, thermodynamic energy profiles, and structural coordination theory.",
-    color: "text-accent-cyan",
+      "A complete visual and conceptual guide to chemical behavior. Focuses on reaction mechanisms with clear electron-push arrows, thermodynamic energy profiles, and structural coordination theory.",
+    color: "text-emerald-600",
     icon: FlaskConical,
     chaptersClass11: [
       "Some Basic Concepts of Chemistry",
@@ -80,7 +80,7 @@ const SUBJECT_DETAILS: Record<
     headline: "Develop Analytical Power with Calculus & Spatial Geometry",
     description:
       "Rigorous formulas, geometric interpretations, and solved board question blueprints. Master differential and integral calculus, 3D vectors, and coordinate manifolds with conceptual depth.",
-    color: "text-accent-violet",
+    color: "text-indigo-600",
     icon: Binary,
     chaptersClass11: [
       "Sets & Relations",
@@ -117,29 +117,29 @@ export default async function SubjectDetailPage({ params }: SubjectDetailProps) 
 
   return (
     <div className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-        <Link href="/subjects" className="hover:text-cyan-400 flex items-center gap-1">
+      <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
+        <Link href="/subjects" className="hover:text-blue-600 flex items-center gap-1">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Subjects
         </Link>
         <span>/</span>
-        <span className="text-white font-bold">{subject.name}</span>
+        <span className="text-slate-900 font-semibold">{subject.name}</span>
       </div>
 
       <div className="space-y-4 max-w-3xl">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-cyan-950/40 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-950/50">
+          <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
             <Icon className={`w-6 h-6 ${subject.color}`} />
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950/40 text-cyan-400 border border-cyan-500/20">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
             {subject.name.toUpperCase()} CURRICULUM
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
           {subject.headline}
         </h1>
 
-        <p className="text-base text-slate-400 leading-relaxed">
+        <p className="text-base text-slate-600 leading-relaxed">
           {subject.description}
         </p>
       </div>
@@ -148,32 +148,32 @@ export default async function SubjectDetailPage({ params }: SubjectDetailProps) 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* Class 11 Modules */}
-        <div className="p-8 rounded-2xl bg-surface-card/75 border border-white/10 shadow-lg space-y-6 backdrop-blur-md">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="p-8 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div>
-              <span className="text-xs font-mono text-cyan-400 font-bold">FOUNDATIONAL</span>
-              <h2 className="text-2xl font-display font-bold text-white">
+              <span className="text-xs font-semibold text-blue-600 uppercase">FOUNDATIONAL</span>
+              <h2 className="text-2xl font-display font-bold text-slate-900">
                 Class 11 {subject.name}
               </h2>
             </div>
             <Link
               href={`/notes?class=11&subject=${slug}`}
-              className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"
             >
               <span>View Notes</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <ul className="space-y-3 text-xs text-slate-300">
+          <ul className="space-y-2.5 text-xs">
             {subject.chaptersClass11.map((ch, idx) => (
-              <li key={idx} className="flex items-center justify-between p-2.5 rounded-lg bg-surface-muted/60 hover:bg-surface-muted border border-white/5 transition-colors">
-                <span className="flex items-center gap-2">
-                  <span className="w-5 font-mono text-cyan-400 font-bold text-[11px]">{idx + 1}.</span>
-                  <span className="font-medium text-slate-200">{ch}</span>
+              <li key={idx} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span className="flex items-center gap-2.5">
+                  <span className="w-5 font-semibold text-blue-600 text-xs">{idx + 1}.</span>
+                  <span className="font-medium text-slate-800">{ch}</span>
                 </span>
-                <span className="text-[10px] font-mono text-slate-400 bg-white/5 px-2 py-0.5 rounded border border-white/10">
-                  DRAFT
+                <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                  CURATED
                 </span>
               </li>
             ))}
@@ -181,32 +181,32 @@ export default async function SubjectDetailPage({ params }: SubjectDetailProps) 
         </div>
 
         {/* Class 12 Modules */}
-        <div className="p-8 rounded-2xl bg-surface-card/75 border border-white/10 shadow-lg space-y-6 backdrop-blur-md">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="p-8 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div>
-              <span className="text-xs font-mono text-cyan-400 font-bold">BOARD & ENTRANCE</span>
-              <h2 className="text-2xl font-display font-bold text-white">
+              <span className="text-xs font-semibold text-blue-600 uppercase">BOARD & ENTRANCE</span>
+              <h2 className="text-2xl font-display font-bold text-slate-900">
                 Class 12 {subject.name}
               </h2>
             </div>
             <Link
               href={`/notes?class=12&subject=${slug}`}
-              className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"
             >
               <span>View Notes</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <ul className="space-y-3 text-xs text-slate-300">
+          <ul className="space-y-2.5 text-xs">
             {subject.chaptersClass12.map((ch, idx) => (
-              <li key={idx} className="flex items-center justify-between p-2.5 rounded-lg bg-surface-muted/60 hover:bg-surface-muted border border-white/5 transition-colors">
-                <span className="flex items-center gap-2">
-                  <span className="w-5 font-mono text-cyan-400 font-bold text-[11px]">{idx + 1}.</span>
-                  <span className="font-medium text-slate-200">{ch}</span>
+              <li key={idx} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span className="flex items-center gap-2.5">
+                  <span className="w-5 font-semibold text-blue-600 text-xs">{idx + 1}.</span>
+                  <span className="font-medium text-slate-800">{ch}</span>
                 </span>
-                <span className="text-[10px] font-mono text-slate-400 bg-white/5 px-2 py-0.5 rounded border border-white/10">
-                  DRAFT
+                <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                  CURATED
                 </span>
               </li>
             ))}

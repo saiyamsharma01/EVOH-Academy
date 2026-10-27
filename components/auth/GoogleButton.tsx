@@ -91,10 +91,10 @@ export default function GoogleButton({
         type="button"
         onClick={handleGoogleLogin}
         disabled={loading}
-        className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-white/10 bg-surface-base/80 hover:bg-surface-card-hover text-white text-sm font-semibold shadow-md shadow-black/40 hover:border-cyan-500/40 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full flex items-center justify-center gap-3 py-2.5 px-4 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold shadow-xs transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {loading ? (
-          <Loader2 className="w-4 h-4 animate-spin text-cyan-400" />
+          <Loader2 className="w-4 h-4 animate-spin text-blue-600" />
         ) : (
           <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
             <path

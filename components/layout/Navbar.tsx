@@ -60,25 +60,25 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full editorial-glass border-b border-border transition-all">
+    <header className="sticky top-0 z-50 w-full editorial-glass transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
         {/* Brand Wordmark */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent-blue flex items-center justify-center text-white shadow-md shadow-primary/25 group-hover:scale-105 transition-transform">
-            <Atom className="w-5 h-5 text-white animate-spin-slow" />
+          <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-xs group-hover:bg-blue-700 transition-colors">
+            <Atom className="w-5 h-5 text-white" />
           </div>
           <div className="flex flex-col">
-            <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-ink-primary group-hover:text-primary transition-colors">
+            <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
               {brandName}
             </span>
-            <span className="text-[10px] font-mono tracking-widest text-ink-muted uppercase -mt-0.5">
-              Science & Mathematics
+            <span className="text-[10px] font-medium tracking-wider text-slate-500 uppercase -mt-0.5">
+              Curriculum Excellence
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-1 lg:gap-1.5 text-sm font-medium">
           {items.map((item) => {
             const isActive =
               pathname === item.path ||
@@ -87,10 +87,10 @@ export default function Navbar({
               <Link
                 key={item.id}
                 href={item.path}
-                className={`px-3.5 py-1.5 rounded-lg transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg transition-colors ${
                   isActive
-                    ? "text-primary font-bold bg-primary/10 shadow-xs"
-                    : "text-ink-secondary hover:text-ink-primary hover:bg-surface-muted"
+                    ? "text-blue-700 font-semibold bg-blue-50/80 border border-blue-100"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
                 }`}
               >
                 {item.label}
@@ -103,7 +103,7 @@ export default function Navbar({
         <div className="hidden sm:flex items-center gap-2.5">
           <Link
             href="/search"
-            className="p-2 rounded-lg text-ink-muted hover:text-white hover:bg-surface-card transition-colors"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
             aria-label="Search curriculum and notes"
           >
             <Search className="w-4 h-4" />
@@ -111,18 +111,18 @@ export default function Navbar({
 
           <Link
             href="/cart"
-            className="relative p-2 rounded-lg text-ink-muted hover:text-white hover:bg-surface-card transition-colors"
+            className="relative p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
             aria-label="Cart"
           >
             <ShoppingBag className="w-4 h-4" />
-            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600" />
           </Link>
 
           {user ? (
             <div className="flex items-center gap-2">
               <Link
                 href="/dashboard"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary/15 text-blue-400 border border-primary/30 text-xs font-semibold hover:bg-primary/25 transition-colors"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold hover:bg-blue-100 transition-colors"
               >
                 <LayoutDashboard className="w-3.5 h-3.5" />
                 <span>Dashboard</span>
@@ -130,7 +130,7 @@ export default function Navbar({
               <button
                 onClick={handleSignOut}
                 title="Sign Out"
-                className="p-2 rounded-lg text-ink-muted hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                className="p-2 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
               </button>
@@ -139,14 +139,14 @@ export default function Navbar({
             <div className="flex items-center gap-2">
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-white/10 bg-surface-card hover:bg-surface-card-hover text-xs font-semibold text-white hover:border-cyan-500/40 transition-all shadow-xs"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 hover:text-slate-900 transition-all shadow-xs"
               >
-                <User className="w-3.5 h-3.5 text-cyan-400" />
+                <User className="w-3.5 h-3.5 text-slate-500" />
                 <span>Student Login</span>
               </Link>
               <Link
                 href="/register"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-md shadow-primary/25 transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
               >
                 <span>Register</span>
               </Link>
@@ -158,15 +158,15 @@ export default function Navbar({
         <div className="flex sm:hidden items-center gap-2">
           <Link
             href="/cart"
-            className="relative p-2 rounded-lg text-ink-muted hover:text-ink-primary"
+            className="relative p-2 rounded-lg text-slate-600 hover:text-slate-900"
             aria-label="Cart"
           >
             <ShoppingBag className="w-5 h-5" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600" />
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-ink-primary hover:bg-surface-muted"
+            className="p-2 rounded-lg text-slate-700 hover:bg-slate-100"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -176,7 +176,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="sm:hidden px-4 pt-3 pb-6 bg-surface-base/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl space-y-4">
+        <div className="sm:hidden px-4 pt-3 pb-6 bg-white border-b border-slate-200 shadow-xl space-y-4">
           <nav className="flex flex-col space-y-1 pt-2">
             {items.map((item) => {
               const isActive =
@@ -189,8 +189,8 @@ export default function Navbar({
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                     isActive
-                      ? "text-cyan-400 font-bold bg-cyan-500/10 border border-cyan-500/20"
-                      : "text-ink-secondary hover:text-white hover:bg-surface-card"
+                      ? "text-blue-700 font-bold bg-blue-50 border border-blue-100"
+                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
                   }`}
                 >
                   {item.label}
@@ -198,13 +198,13 @@ export default function Navbar({
               );
             })}
           </nav>
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
+          <div className="pt-4 border-t border-slate-200 flex flex-col gap-2.5">
             {user ? (
               <>
                 <Link
                   href="/dashboard"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 rounded-lg bg-primary text-white text-sm font-semibold shadow"
+                  className="w-full text-center py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold shadow-xs"
                 >
                   Go to Student Dashboard
                 </Link>
@@ -213,7 +213,7 @@ export default function Navbar({
                     setMobileMenuOpen(false);
                     handleSignOut();
                   }}
-                  className="w-full text-center py-2 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 text-sm font-semibold"
+                  className="w-full text-center py-2 rounded-lg border border-red-200 bg-red-50 text-red-600 text-sm font-semibold"
                 >
                   Sign Out
                 </button>
@@ -223,14 +223,14 @@ export default function Navbar({
                 <Link
                   href="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 rounded-lg border border-white/10 bg-surface-card text-sm font-semibold text-white"
+                  className="w-full text-center py-2.5 rounded-lg border border-slate-200 bg-white text-sm font-semibold text-slate-800 hover:bg-slate-50"
                 >
                   Student Login
                 </Link>
                 <Link
                   href="/register"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 rounded-lg bg-primary text-white text-sm font-semibold shadow"
+                  className="w-full text-center py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold shadow-xs"
                 >
                   Create Account
                 </Link>

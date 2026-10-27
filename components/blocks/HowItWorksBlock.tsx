@@ -34,17 +34,17 @@ export default function HowItWorksBlock({ config }: { config: HowItWorksConfig }
   ];
 
   return (
-    <section className="py-14 sm:py-20 lg:py-24 bg-surface-base scientific-grid border-b border-border">
+    <section className="py-14 sm:py-20 lg:py-24 bg-white scientific-grid border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 space-y-3 sm:space-y-4">
-          <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
+          <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/70 inline-block">
             Seamless Academic Access
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-slate-900 tracking-tight">
             How EVOH Academy Works
           </h2>
-          <p className="text-sm sm:text-base text-ink-muted">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
             Transparent, immediate, and built for uninterrupted high-school and competitive exam study.
           </p>
         </div>
@@ -55,22 +55,22 @@ export default function HowItWorksBlock({ config }: { config: HowItWorksConfig }
             return (
               <div
                 key={idx}
-                className="relative p-6 sm:p-8 rounded-3xl bg-surface-card/75 hover:bg-surface-card-hover/90 border border-white/10 hover:border-cyan-500/40 shadow-xl backdrop-blur-md transition-all duration-300 space-y-4 sm:space-y-6 group"
+                className="relative p-7 sm:p-8 rounded-2xl bg-slate-50/70 hover:bg-white border border-slate-200/90 hover:border-slate-300 shadow-xs hover:shadow-md transition-all duration-200 space-y-5 group"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/25 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="text-2xl sm:text-3xl font-mono font-extrabold text-white/15 group-hover:text-cyan-400/30 transition-colors">
+                  <span className="text-2xl sm:text-3xl font-mono font-extrabold text-slate-300 group-hover:text-blue-600/30 transition-colors">
                     {s.num}
                   </span>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg sm:text-xl font-display font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     {s.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {s.body}
                   </p>
                 </div>
@@ -79,15 +79,15 @@ export default function HowItWorksBlock({ config }: { config: HowItWorksConfig }
           })}
         </div>
 
-        <div className="mt-10 sm:mt-12 text-center text-[11px] sm:text-xs font-mono text-slate-400 flex flex-col sm:flex-row items-center justify-center gap-2 max-w-2xl mx-auto">
-          <div className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="mt-10 sm:mt-12 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-center gap-2 max-w-2xl mx-auto">
+          <div className="flex items-center gap-1.5 text-emerald-700 font-semibold">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>GST-Compliant Invoicing</span>
           </div>
-          <span className="hidden sm:inline">•</span>
-          <span>Traceable watermark deterrent</span>
-          <span className="hidden sm:inline">•</span>
-          <span>Lifetime updates for registered editions</span>
+          <span className="hidden sm:inline text-slate-300">•</span>
+          <span>Traceable dynamic watermarking</span>
+          <span className="hidden sm:inline text-slate-300">•</span>
+          <span>Instant student dashboard delivery</span>
         </div>
 
       </div>

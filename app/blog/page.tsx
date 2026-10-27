@@ -33,13 +33,13 @@ export default function BlogPage() {
     <div className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       
       <div className="space-y-4 max-w-3xl">
-        <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/20">
+        <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80">
           Scientific Insights
         </span>
-        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
           Academic Insights & Problem-Solving
         </h1>
-        <p className="text-base text-slate-400 leading-relaxed">
+        <p className="text-base text-slate-600 leading-relaxed">
           In-depth guides on structuring mathematical proofs, visualizing molecular reactions, and excelling in high-school science examinations.
         </p>
       </div>
@@ -48,30 +48,30 @@ export default function BlogPage() {
         {posts.map((post) => (
           <article
             key={post.slug}
-            className="p-8 rounded-3xl bg-surface-card/70 border border-white/10 hover:border-cyan-500/30 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between backdrop-blur-md hover:-translate-y-1"
+            className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-slate-300 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                <span className="text-cyan-400 font-bold">{post.category}</span>
+              <div className="flex items-center justify-between text-xs text-slate-500 font-medium">
+                <span className="text-blue-600 font-semibold">{post.category}</span>
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-slate-500" /> {post.readingTime}
+                  <Clock className="w-3.5 h-3.5 text-slate-400" /> {post.readingTime}
                 </span>
               </div>
 
-              <h2 className="text-xl font-display font-bold text-white leading-snug">
+              <h2 className="text-xl font-display font-bold text-slate-900 leading-snug">
                 {post.title}
               </h2>
 
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 {post.excerpt}
               </p>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
-              <span className="text-xs font-mono text-slate-500">{post.date}</span>
-              <span className="text-xs font-semibold text-cyan-400 flex items-center gap-1 group cursor-pointer hover:text-cyan-300">
+            <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+              <span className="text-xs text-slate-400 font-medium">{post.date}</span>
+              <span className="text-xs font-semibold text-blue-600 flex items-center gap-1 cursor-pointer hover:text-blue-700">
                 <span>Read Article</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
           </article>

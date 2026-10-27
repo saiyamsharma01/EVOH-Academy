@@ -72,44 +72,41 @@ function LoginForm() {
   };
 
   return (
-    <div className="py-20 max-w-md mx-auto px-4 sm:px-6 space-y-8 relative">
-      {/* Background Ambience Glow */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary/15 rounded-full blur-3xl pointer-events-none -z-10" />
-
+    <div className="py-16 sm:py-20 max-w-md mx-auto px-4 sm:px-6 space-y-6">
       {/* Brand Header */}
-      <div className="text-center space-y-3">
+      <div className="text-center space-y-2">
         <Link href="/" className="inline-block">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-cyan-500 flex items-center justify-center text-white mx-auto shadow-lg shadow-primary/25 hover:scale-105 transition-transform">
-            <Atom className="w-7 h-7" />
+          <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white mx-auto shadow-xs hover:bg-blue-700 transition-colors">
+            <Atom className="w-6 h-6" />
           </div>
         </Link>
-        <h1 className="text-3xl font-display font-extrabold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 tracking-tight">
           Welcome Back
         </h1>
-        <p className="text-xs text-slate-400">
-          Log in to access your purchased notes, subscriptions, and download library.
+        <p className="text-xs sm:text-sm text-slate-600">
+          Sign in to access your notes library, downloads, and student desk.
         </p>
       </div>
 
-      <div className="p-8 rounded-3xl bg-surface-card/85 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+      <div className="p-7 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-6">
         {/* Success Alert */}
         {success && (
-          <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-xs text-emerald-400 flex items-start gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+          <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-start gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
             <span>{success}</span>
           </div>
         )}
 
         {/* Error Alert */}
         {error && (
-          <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/25 text-xs text-red-400 flex items-start gap-2.5">
-            <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+          <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2.5">
+            <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
             <span>{error}</span>
           </div>
         )}
 
         {/* Google One-Click OAuth */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           <GoogleButton
             label="Continue with Google"
             redirectTo="/dashboard"
@@ -117,18 +114,18 @@ function LoginForm() {
           />
 
           <div className="relative flex items-center justify-center">
-            <div className="border-t border-white/10 w-full"></div>
-            <span className="bg-surface-card px-3 text-[11px] font-mono uppercase tracking-wider text-slate-400 shrink-0">
+            <div className="border-t border-slate-200 w-full"></div>
+            <span className="bg-white px-3 text-xs uppercase tracking-wider text-slate-400 shrink-0 font-medium">
               Or with email
             </span>
-            <div className="border-t border-white/10 w-full"></div>
+            <div className="border-t border-slate-200 w-full"></div>
           </div>
         </div>
 
         {/* Credentials Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-mono text-slate-300 font-semibold">
+            <label className="text-xs text-slate-700 font-medium">
               Email Address
             </label>
             <div className="relative">
@@ -140,19 +137,19 @@ function LoginForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="student@example.com"
                 disabled={loading}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-white/10 bg-surface-base/80 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 text-sm text-white placeholder-slate-500 outline-none transition-all disabled:opacity-50"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600 text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors disabled:opacity-50"
               />
             </div>
           </div>
 
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-mono text-slate-300 font-semibold">
+              <label className="text-xs text-slate-700 font-medium">
                 Password
               </label>
               <Link
                 href="/forgot-password"
-                className="text-xs text-cyan-400 hover:text-cyan-300 hover:underline"
+                className="text-xs text-blue-600 hover:underline font-medium"
               >
                 Forgot?
               </Link>
@@ -166,7 +163,7 @@ function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
                 disabled={loading}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-white/10 bg-surface-base/80 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 text-sm text-white placeholder-slate-500 outline-none transition-all disabled:opacity-50"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600 text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors disabled:opacity-50"
               />
             </div>
           </div>
@@ -174,7 +171,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-xs transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -186,11 +183,11 @@ function LoginForm() {
             )}
           </button>
 
-          <p className="text-center text-xs text-slate-400 pt-2">
+          <p className="text-center text-xs text-slate-600 pt-2">
             Don&apos;t have an account yet?{" "}
             <Link
               href="/register"
-              className="text-cyan-400 font-semibold hover:underline"
+              className="text-blue-600 font-semibold hover:underline"
             >
               Register here
             </Link>
@@ -198,8 +195,8 @@ function LoginForm() {
         </form>
       </div>
 
-      <div className="text-center text-[11px] font-mono text-slate-400 flex items-center justify-center gap-1.5">
-        <Shield className="w-3.5 h-3.5 text-emerald-400" />
+      <div className="text-center text-xs text-slate-500 flex items-center justify-center gap-1.5">
+        <Shield className="w-3.5 h-3.5 text-emerald-600" />
         <span>Secure authentication with server-verified session tokens</span>
       </div>
     </div>
@@ -211,7 +208,7 @@ export default function LoginPage() {
     <Suspense
       fallback={
         <div className="min-h-[50vh] flex items-center justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
         </div>
       }
     >

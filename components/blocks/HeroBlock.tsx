@@ -107,16 +107,16 @@ export default function HeroBlock({ config }: { config: HeroConfig }) {
 
           {/* 3D Scientific Visualization Column */}
           <div className="lg:col-span-5 relative">
-            <div className="relative w-full aspect-square max-w-[340px] sm:max-w-[440px] lg:max-w-[500px] mx-auto rounded-3xl dark-glass p-2.5 sm:p-3 shadow-2xl cyan-glow">
+            <div className="relative w-full aspect-square max-w-[340px] sm:max-w-[440px] lg:max-w-[500px] mx-auto rounded-3xl dark-glass p-2.5 sm:p-3 shadow-xl border border-white/10">
               <Hero3DScene speed={1.0} />
               
               {/* Scientific Tag overlay */}
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-surface-dark/85 backdrop-blur-md border border-white/10 text-[11px] sm:text-xs font-mono text-slate-300">
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/10 text-[11px] sm:text-xs font-mono text-slate-300">
                 <span className="flex items-center gap-2 truncate">
-                  <span className="w-2 h-2 rounded-full bg-accent-cyan animate-ping shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-blue-400 shrink-0" />
                   <span className="truncate">ψ(r,θ,φ) ORBITAL</span>
                 </span>
-                <span className="text-accent-cyan font-bold shrink-0 ml-2">Interactive 3D</span>
+                <span className="text-blue-300 font-semibold shrink-0 ml-2">Interactive 3D</span>
               </div>
             </div>
           </div>

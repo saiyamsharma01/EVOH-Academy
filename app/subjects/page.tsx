@@ -13,21 +13,21 @@ export default function SubjectsPage() {
       name: "Physics",
       slug: "physics",
       icon: Atom,
-      color: "text-primary",
-      bg: "bg-primary/10",
+      color: "text-blue-600",
+      bg: "bg-blue-50 border-blue-100",
       description:
-        "Understand the foundational laws governing the universe. From classical kinematics and Newton's laws to electrodynamics, wave optics, and quantum dual nature.",
+        "Understand the foundational laws governing the universe. From classical kinematics and Newton's laws to electrodynamics, wave optics, and modern physics.",
       classes: "Classes 11 & 12",
-      badge: "Derivations & Free-Body Diagrams",
+      badge: "Derivations & Vector Diagrams",
     },
     {
       name: "Chemistry",
       slug: "chemistry",
       icon: FlaskConical,
-      color: "text-accent-cyan",
-      bg: "bg-cyan-500/10",
+      color: "text-emerald-600",
+      bg: "bg-emerald-50 border-emerald-100",
       description:
-        "Demystify matter and molecular transformations. Organic reaction mechanisms with electron push arrows, atomic orbitals, thermodynamics, and electrochemistry.",
+        "Demystify matter and molecular transformations. Organic reaction mechanisms with electron-push arrows, atomic orbitals, thermodynamics, and electrochemistry.",
       classes: "Classes 11 & 12",
       badge: "Reaction Mechanisms & Orbitals",
     },
@@ -35,25 +35,25 @@ export default function SubjectsPage() {
       name: "Mathematics",
       slug: "mathematics",
       icon: Binary,
-      color: "text-accent-violet",
-      bg: "bg-indigo-500/10",
+      color: "text-indigo-600",
+      bg: "bg-indigo-50 border-indigo-100",
       description:
         "Develop supreme analytical power. Comprehensive calculus blueprints, coordinate geometry, trigonometric matrices, and 3D vector spaces.",
       classes: "Classes 11 & 12",
-      badge: "Calculus & Formula Memory Sheets",
+      badge: "Calculus & Formula Maps",
     },
   ];
 
   return (
     <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 inline-block">
+        <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 inline-block">
           Subject Architecture
         </span>
-        <h1 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight">
           Physics, Chemistry & Mathematics
         </h1>
-        <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
           Select a subject to explore chapter-by-chapter concept maps, formula sheets, and verified derivation notes.
         </p>
       </div>
@@ -64,35 +64,35 @@ export default function SubjectsPage() {
           return (
             <div
               key={s.slug}
-              className="p-8 rounded-3xl bg-surface-card/75 hover:bg-surface-card-hover/90 border border-white/10 hover:border-cyan-500/40 shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between group"
+              className="p-8 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
             >
               <div className="space-y-6">
-                <div className={`w-14 h-14 rounded-2xl ${s.bg} border border-white/10 flex items-center justify-center shadow-lg transition-transform group-hover:scale-105`}>
-                  <Icon className={`w-7 h-7 ${s.color}`} />
+                <div className={`w-12 h-12 rounded-xl ${s.bg} border flex items-center justify-center transition-transform group-hover:scale-105`}>
+                  <Icon className={`w-6 h-6 ${s.color}`} />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono text-slate-400">{s.classes}</span>
-                    <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20">
+                    <span className="text-xs text-slate-500 font-medium">{s.classes}</span>
+                    <span className="text-[11px] font-semibold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full">
                       {s.badge}
                     </span>
                   </div>
-                  <h2 className="text-2xl font-display font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  <h2 className="text-2xl font-display font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     {s.name}
                   </h2>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed">
                     {s.description}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-8 mt-6 border-t border-white/10">
+              <div className="pt-8 mt-6 border-t border-slate-100">
                 <Link
                   href={`/subjects/${s.slug}`}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-xs transition-colors"
                 >
-                  <span>Explore {s.name}</span>
+                  <span>Explore {s.name} Curriculum</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

@@ -53,7 +53,7 @@ export default function PricingPage() {
         "Complete Class 11 and 12 curriculum library",
         "All question banks and mock tests (PDF)",
         "Priority student support ticket resolution",
-        "Future video updates (when launched)",
+        "Future updates included automatically",
       ],
       ctaText: "Get All Access",
       ctaLink: "/notes",
@@ -66,14 +66,14 @@ export default function PricingPage() {
       
       {/* Title */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/20">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+        <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80">
+          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
           Transparent Academic Plans
         </span>
-        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
           Flexible Learning, Zero Hidden Costs
         </h1>
-        <p className="text-base text-slate-400 leading-relaxed">
+        <p className="text-base text-slate-600 leading-relaxed">
           Choose individual topic purchases or unlock full subject passes. All prices include applicable GST with official downloadable tax invoices issued on every transaction.
         </p>
       </div>
@@ -83,18 +83,18 @@ export default function PricingPage() {
         {plans.map((p, idx) => (
           <div
             key={idx}
-            className={`p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 relative backdrop-blur-md ${
+            className={`p-8 rounded-2xl flex flex-col justify-between transition-all duration-200 relative ${
               p.highlighted
-                ? "bg-gradient-to-b from-surface-card via-surface-card to-surface-card/90 border border-cyan-400/40 shadow-2xl shadow-cyan-950/50 ring-1 ring-cyan-400/20 md:-translate-y-2"
-                : "bg-surface-card/60 border border-white/10 shadow-lg hover:border-cyan-500/30 hover:bg-surface-card/80 hover:-translate-y-1"
+                ? "bg-white border-2 border-blue-600 shadow-md md:-translate-y-2 ring-1 ring-blue-600/10"
+                : "bg-white border border-slate-200/90 shadow-xs hover:border-slate-300 hover:shadow-md"
             }`}
           >
             {p.badge && (
               <span
-                className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase ${
+                className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
                   p.highlighted
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25"
-                    : "bg-surface-muted/90 text-slate-300 border border-white/10"
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "bg-slate-100 text-slate-700 border border-slate-200"
                 }`}
               >
                 {p.badge}
@@ -103,46 +103,46 @@ export default function PricingPage() {
 
             <div className="space-y-6 pt-2">
               <div className="space-y-2">
-                <h2 className="text-2xl font-display font-bold text-white">
+                <h2 className="text-2xl font-display font-bold text-slate-900">
                   {p.name}
                 </h2>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   {p.description}
                 </p>
               </div>
 
-              <div className="space-y-1 pb-4 border-b border-white/10">
+              <div className="space-y-1 pb-4 border-b border-slate-100">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-display font-extrabold text-white">
+                  <span className="text-4xl font-display font-extrabold text-slate-900">
                     {p.price}
                   </span>
-                  <span className="text-xs font-mono text-slate-400">
+                  <span className="text-xs text-slate-500 font-medium">
                     / {p.interval}
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-slate-500 block">
-                  Configurable tier • Safe sandbox checkout
+                <span className="text-xs text-slate-400 block font-medium">
+                  Configurable tier • GST included
                 </span>
               </div>
 
               {/* Feature list */}
-              <ul className="space-y-3 text-xs text-slate-300">
+              <ul className="space-y-3 text-xs text-slate-600">
                 {p.features.map((f, fIdx) => (
                   <li key={fIdx} className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
+                    <Check className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
                     <span className="leading-relaxed">{f}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-white/10">
+            <div className="pt-8 mt-6 border-t border-slate-100">
               <Link
                 href={p.ctaLink}
-                className={`w-full inline-flex items-center justify-center py-3.5 px-4 rounded-xl text-sm font-semibold transition-all ${
+                className={`w-full inline-flex items-center justify-center py-3.5 px-4 rounded-xl text-sm font-semibold transition-colors ${
                   p.highlighted
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:-translate-y-0.5"
-                    : "bg-white/5 hover:bg-white/10 border border-white/10 text-white"
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-xs"
+                    : "bg-white hover:bg-slate-50 border border-slate-200 text-slate-700"
                 }`}
               >
                 {p.ctaText}
@@ -153,12 +153,12 @@ export default function PricingPage() {
       </div>
 
       {/* Trust & Guarantee Banner */}
-      <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-surface-card/60 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400 backdrop-blur-sm">
+      <div className="max-w-4xl mx-auto p-5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
         <div className="flex items-center gap-3">
-          <ShieldCheck className="w-6 h-6 text-emerald-400 shrink-0" />
+          <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
           <span>Verified GST tax invoices issued sequentially upon payment.</span>
         </div>
-        <Link href="/refund-policy" className="text-cyan-400 hover:text-cyan-300 hover:underline font-semibold shrink-0">
+        <Link href="/refund-policy" className="text-blue-600 hover:underline font-semibold shrink-0">
           Refund Policy Terms →
         </Link>
       </div>

@@ -58,13 +58,13 @@ export default function FaqPage() {
     <div className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/20">
+        <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80">
           Answers & Clarifications
         </span>
-        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
           Frequently Asked Questions
         </h1>
-        <p className="text-base text-slate-400 leading-relaxed">
+        <p className="text-base text-slate-600 leading-relaxed">
           Find answers to common questions about study materials, digital licensing, device limits, and payments.
         </p>
       </div>
@@ -72,7 +72,7 @@ export default function FaqPage() {
       <div className="space-y-12">
         {faqs.map((cat, idx) => (
           <div key={idx} className="space-y-6">
-            <h2 className="text-xl font-display font-bold text-white border-b border-white/10 pb-3">
+            <h2 className="text-xl font-display font-bold text-slate-900 border-b border-slate-200 pb-3">
               {cat.category}
             </h2>
 
@@ -80,13 +80,13 @@ export default function FaqPage() {
               {cat.items.map((item, qIdx) => (
                 <div
                   key={qIdx}
-                  className="p-6 rounded-2xl bg-surface-card/70 border border-white/10 hover:border-cyan-500/30 transition-all shadow-lg space-y-2.5 backdrop-blur-md"
+                  className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-slate-300 transition-all shadow-xs space-y-2.5"
                 >
-                  <h3 className="text-base font-display font-bold text-white flex items-start gap-2.5">
-                    <HelpCircle className="w-4 h-4 text-cyan-400 shrink-0 mt-1" />
+                  <h3 className="text-base font-display font-bold text-slate-900 flex items-start gap-2.5">
+                    <HelpCircle className="w-4 h-4 text-blue-600 shrink-0 mt-1" />
                     <span>{item.q}</span>
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed pl-6.5">
+                  <p className="text-xs text-slate-600 leading-relaxed pl-6.5">
                     {item.a}
                   </p>
                 </div>
@@ -96,19 +96,21 @@ export default function FaqPage() {
         ))}
       </div>
 
-      <div className="p-8 rounded-2xl bg-surface-card/50 border border-white/10 text-center space-y-3 backdrop-blur-md">
-        <h3 className="text-base font-display font-bold text-white">
-          Have a question not answered here?
+      <div className="p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-3">
+        <h3 className="text-base font-display font-bold text-slate-900">
+          Have an unaddressed academic question?
         </h3>
-        <p className="text-xs text-slate-400">
-          Our academic support team is available to assist you.
+        <p className="text-xs text-slate-600">
+          Our faculty advisory team is available to help clarify any doubts regarding notes or curriculum structure.
         </p>
-        <Link
-          href="/contact"
-          className="inline-block mt-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-lg shadow-cyan-500/25 transition-all hover:-translate-y-0.5"
-        >
-          Contact Student Support
-        </Link>
+        <div className="pt-2">
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center py-2.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors"
+          >
+            Contact Faculty Advisory
+          </Link>
+        </div>
       </div>
 
     </div>

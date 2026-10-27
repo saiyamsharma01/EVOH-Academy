@@ -3,31 +3,31 @@
 @tailwind utilities;
 
 :root {
-  /* Quantum Obsidian Deep Void Theme (PRD & Professional Science Tech Aesthetic) */
-  --surface-base: 224 55% 5%;          /* #050814 - Deep Void / Cosmic Black */
-  --surface-muted: 226 40% 9%;         /* #090E20 - Elevated Section Slate */
-  --surface-card: 226 35% 11%;         /* #0D152B - Rich Dark Card Canvas */
-  --surface-card-hover: 226 30% 16%;   /* #141E3A - Card Hover State */
-  --surface-dark: 224 55% 5%;          /* #050814 */
-  --surface-dark-card: 226 38% 12%;    /* #0F182E */
+  /* Executive Academic Theme (Prestigious, Human-Crafted, Warm Slate & Deep Royal Navy) */
+  --surface-base: 210 40% 98%;          /* #F8FAFC - Soft warm slate off-white canvas (comfortable on eyes, non-glare) */
+  --surface-muted: 210 40% 96%;         /* #F1F5F9 - Subtle section contrast */
+  --surface-card: 0 0% 100%;            /* #FFFFFF - Crisp elevated cards */
+  --surface-card-hover: 210 40% 98%;    /* #F8FAFC */
+  --surface-dark: 222 47% 11%;          /* #0F172A - Executive Navy for hero & key contrast anchors */
+  --surface-dark-card: 217 33% 17%;     /* #1E293B */
 
-  /* Electric Cobalt, Quantum Cyan & Molecular Violet */
-  --primary: 217 91% 60%;              /* #3B82F6 - Electric Blue */
-  --primary-hover: 221 83% 53%;        /* #2563EB */
-  --accent-cyan: 189 94% 48%;          /* #06B6D4 - Quantum Cyan */
-  --accent-violet: 258 90% 66%;        /* #8B5CF6 - Molecular Violet */
+  /* Royal Navy, Cobalt & Academic Accents */
+  --primary: 221 83% 53%;               /* #2563EB - Royal Cobalt Blue */
+  --primary-hover: 224 76% 48%;         /* #1D4ED8 */
+  --accent-cyan: 199 89% 48%;           /* #0284C7 - Refined Sapphire */
+  --accent-violet: 243 75% 59%;         /* #4F46E5 - Academic Indigo */
 
-  /* Crisp Typography */
-  --text-primary: 210 40% 98%;         /* #F8FAFC - Crisp Bright White */
-  --text-secondary: 215 20% 75%;       /* #CBD5E1 - Muted Clean Slate */
-  --text-muted: 215 16% 56%;           /* #94A3B8 - Slate Technical Muted */
+  /* Executive Human Typography */
+  --text-primary: 222 47% 11%;          /* #0F172A - Deep Charcoal / Navy ink */
+  --text-secondary: 215 25% 27%;        /* #334155 - Slate 700 body text */
+  --text-muted: 215 16% 47%;            /* #64748B - Slate 500 metadata */
 
   --background: var(--surface-base);
   --foreground: var(--text-primary);
 
-  --border: 226 28% 18%;               /* #1E2942 - Subtle Cosmic Border */
-  --border-subtle: 226 25% 13%;
-  --input: 226 32% 11%;                /* Dark Input Canvas */
+  --border: 214 32% 91%;                /* #E2E8F0 - Hairline Slate Border */
+  --border-subtle: 220 13% 91%;         /* #E2E8F0 */
+  --input: 0 0% 100%;                   /* Pure white input canvas */
   --ring: var(--primary);
   --radius: 0.75rem;
 }
@@ -40,68 +40,65 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Scientific Grid & Mathematical Visual Rhythm (Dark Quantum Grid) */
+/* Subtle architectural grid pattern for academic structure */
 .scientific-grid {
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
 
 .scientific-grid-dark {
-  background-size: 48px 48px;
+  background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
-/* Glassmorphism for floating controls & headers */
-.editorial-glass,
+/* Executive Academic Glass for Navbar and floating bars */
+.editorial-glass {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
 .dark-glass {
-  background: rgba(8, 14, 32, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Quantum Glass Card */
+/* Academic Card - Crisp white with authentic soft shadow (Zero AI neon) */
+.academic-card,
 .quantum-card {
-  background: rgba(13, 21, 43, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.academic-card:hover,
 .quantum-card:hover {
-  background: rgba(18, 29, 58, 0.85);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 10px 30px -5px rgba(6, 182, 212, 0.15), 0 0 20px -2px rgba(59, 130, 246, 0.2);
+  border-color: #CBD5E1;
+  box-shadow: 0 8px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.02);
   transform: translateY(-2px);
 }
 
-/* Scientific Glow & Accents */
-.cyan-glow {
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
-}
-
-.cobalt-glow {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
-}
-
-/* Smooth custom scrollbar */
+/* Sleek subtle scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #050814;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #94A3B8;
 }

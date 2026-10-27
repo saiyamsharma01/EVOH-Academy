@@ -14,10 +14,10 @@ export default function SubjectFeatureBlock({ config }: { config: SubjectFeature
       name: "Physics",
       slug: "physics",
       icon: Atom,
-      color: "text-blue-400",
-      accentBg: "bg-blue-500/10 border border-blue-500/25 shadow-[0_0_15px_rgba(59,130,246,0.15)]",
-      borderHover: "hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]",
-      description: "Mathematical modeling of reality: Mechanics, Electrostatics, Magnetism, Optics & Modern Physics.",
+      color: "text-blue-600",
+      accentBg: "bg-blue-50 border border-blue-100",
+      borderHover: "hover:border-blue-200",
+      description: "Mathematical modeling of physical principles: Mechanics, Electrostatics, Magnetism, Optics & Modern Physics.",
       bullets: ["Step-by-step mathematical derivations", "Free body diagrams & vector analysis", "Solved conceptual board problems"],
       link: "/subjects/physics",
     },
@@ -25,39 +25,39 @@ export default function SubjectFeatureBlock({ config }: { config: SubjectFeature
       name: "Chemistry",
       slug: "chemistry",
       icon: FlaskConical,
-      color: "text-cyan-400",
-      accentBg: "bg-cyan-500/10 border border-cyan-500/25 shadow-[0_0_15px_rgba(6,182,212,0.15)]",
-      borderHover: "hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]",
-      description: "Organic mechanism flows, molecular orbital hybridization, and physical chemistry stoichiometry.",
-      bullets: ["Electron push arrow mechanism maps", "Periodic property trend charts", "Crystal lattice & thermodynamics summaries"],
+      color: "text-emerald-600",
+      accentBg: "bg-emerald-50 border border-emerald-100",
+      borderHover: "hover:border-emerald-200",
+      description: "Organic reaction pathways, coordination complexes, chemical thermodynamics, and stoichiometry.",
+      bullets: ["Electron-push mechanism schematics", "Periodic property trend charts", "Thermodynamics & equilibrium summaries"],
       link: "/subjects/chemistry",
     },
     {
       name: "Mathematics",
       slug: "mathematics",
       icon: Binary,
-      color: "text-violet-400",
-      accentBg: "bg-violet-500/10 border border-violet-500/25 shadow-[0_0_15px_rgba(139,92,246,0.15)]",
-      borderHover: "hover:border-violet-500/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]",
+      color: "text-indigo-600",
+      accentBg: "bg-indigo-50 border border-indigo-100",
+      borderHover: "hover:border-indigo-200",
       description: "Rigorous analytical geometry, differential & integral calculus, linear algebra, and 3D vectors.",
-      bullets: ["Curated formula memory sheets", "Geometric proofs & visual interpretations", "Calculus application blueprints"],
+      bullets: ["Essential formula summary sheets", "Geometric proofs & visual interpretations", "Calculus application blueprints"],
       link: "/subjects/mathematics",
     },
   ];
 
   return (
-    <section className="py-14 sm:py-20 lg:py-24 bg-surface-muted/50 border-b border-white/10 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-14 sm:py-20 lg:py-24 bg-white border-b border-slate-200/80 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="max-w-3xl mb-10 sm:mb-16 space-y-3 sm:space-y-4">
-          <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 inline-block">
-            Deep Subject Architecture
+          <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/70 inline-block">
+            Curriculum Depth
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-white tracking-tight">
-            Designed for Scientific Rigor & Comprehension
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-slate-900 tracking-tight">
+            Engineered for Rigorous Conceptual Mastery
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
-            Each subject is structured from foundational postulates up to advanced application problems, ensuring you understand the fundamental &quot;why&quot; behind every formula.
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Every module builds foundational principles up to advanced analytical problems, ensuring complete mastery over derivations and core concepts.
           </p>
         </div>
 
@@ -67,25 +67,25 @@ export default function SubjectFeatureBlock({ config }: { config: SubjectFeature
             return (
               <div
                 key={s.slug}
-                className={`p-6 sm:p-8 rounded-3xl bg-surface-card/75 hover:bg-surface-card-hover/90 border border-white/10 ${s.borderHover} shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between group`}
+                className="p-7 sm:p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-slate-300 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
               >
                 <div className="space-y-6">
-                  <div className={`w-14 h-14 rounded-2xl ${s.accentBg} flex items-center justify-center transition-transform group-hover:scale-105`}>
-                    <Icon className={`w-7 h-7 ${s.color}`} />
+                  <div className={`w-13 h-13 w-12 h-12 rounded-xl ${s.accentBg} flex items-center justify-center transition-transform group-hover:scale-105`}>
+                    <Icon className={`w-6 h-6 ${s.color}`} />
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="text-2xl font-display font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  <div className="space-y-2.5">
+                    <h3 className="text-2xl font-display font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                       {s.name}
                     </h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
+                    <p className="text-sm text-slate-600 leading-relaxed">
                       {s.description}
                     </p>
                   </div>
 
-                  <ul className="space-y-3 pt-2">
+                  <ul className="space-y-2.5 pt-2">
                     {s.bullets.map((b, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
+                      <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-600">
                         <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${s.color}`} />
                         <span>{b}</span>
                       </li>
@@ -93,12 +93,12 @@ export default function SubjectFeatureBlock({ config }: { config: SubjectFeature
                   </ul>
                 </div>
 
-                <div className="pt-8 mt-6 border-t border-white/10">
+                <div className="pt-6 mt-6 border-t border-slate-100">
                   <Link
                     href={s.link}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 group"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 group"
                   >
-                    <span>Explore {s.name} Curriculum</span>
+                    <span>Explore {s.name} Syllabus</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
