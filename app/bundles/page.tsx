@@ -50,13 +50,13 @@ export default function BundlesPage() {
   return (
     <div className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <div className="space-y-4 max-w-3xl">
-        <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-primary/10 text-primary border border-primary/20">
+        <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950/40 text-cyan-400 border border-cyan-500/20">
           STUDY PACKS & SAVINGS
         </span>
-        <h1 className="text-4xl font-display font-extrabold text-ink-primary tracking-tight">
+        <h1 className="text-4xl font-display font-extrabold text-white tracking-tight">
           Curriculum Study Bundles
         </h1>
-        <p className="text-base text-ink-muted leading-relaxed">
+        <p className="text-base text-slate-400 leading-relaxed">
           Comprehensive multi-chapter packs designed to guide you from foundational postulates through complex problem sets at discounted bundled pricing.
         </p>
       </div>
@@ -65,46 +65,46 @@ export default function BundlesPage() {
         {bundles.map((b) => (
           <div
             key={b.id}
-            className="p-8 rounded-3xl bg-white border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+            className="p-8 rounded-3xl bg-surface-card/75 border border-white/10 hover:border-cyan-500/40 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between backdrop-blur-md hover:-translate-y-1"
           >
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-surface-muted text-ink-muted border border-border">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-surface-muted/90 text-slate-300 border border-white/10">
                   CLASS {b.classLevel} • {b.subject.toUpperCase()}
                 </span>
-                <span className="text-xs font-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-bold">
+                <span className="text-xs font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
                   SAVE BUNDLED
                 </span>
               </div>
 
               <div className="space-y-2">
-                <h2 className="text-xl font-display font-bold text-ink-primary">
+                <h2 className="text-xl font-display font-bold text-white">
                   {b.title}
                 </h2>
-                <p className="text-xs text-ink-muted leading-relaxed">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   {b.description}
                 </p>
               </div>
 
-              <div className="text-xs font-mono text-ink-muted flex items-center gap-2 pt-2 border-t border-border">
-                <Package className="w-4 h-4 text-primary" />
+              <div className="text-xs font-mono text-slate-400 flex items-center gap-2 pt-2 border-t border-white/10">
+                <Package className="w-4 h-4 text-cyan-400" />
                 <span>Includes {b.resourceCount} Complete Study Modules</span>
               </div>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-border flex items-center justify-between gap-4">
+            <div className="pt-8 mt-6 border-t border-white/10 flex items-center justify-between gap-4">
               <div className="space-y-0.5">
-                <span className="text-xs font-mono line-through text-ink-muted">
+                <span className="text-xs font-mono line-through text-slate-500">
                   {b.originalPrice}
                 </span>
-                <div className="text-2xl font-display font-extrabold text-ink-primary">
+                <div className="text-2xl font-display font-extrabold text-white">
                   {b.price}
                 </div>
               </div>
 
               <Link
                 href={`/notes`}
-                className="inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-lg shadow-cyan-500/25 transition-all hover:-translate-y-0.5"
               >
                 <span>Unlock Bundle</span>
                 <ArrowRight className="w-4 h-4" />

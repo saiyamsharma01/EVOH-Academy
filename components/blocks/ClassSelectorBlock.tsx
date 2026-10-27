@@ -35,37 +35,40 @@ export default function ClassSelectorBlock({ config }: { config: ClassSelectorCo
             <Link
               key={cls.level}
               href={cls.link}
-              className="group relative p-6 sm:p-8 rounded-2xl bg-white border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="group relative p-6 sm:p-8 rounded-3xl bg-surface-card/75 hover:bg-surface-card-hover/90 border border-white/10 hover:border-cyan-500/40 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden"
             >
-              <div className="space-y-6">
+              {/* Subtle Ambient Radial Glow */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all duration-500" />
+
+              <div className="space-y-6 relative z-10">
                 <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-primary/10 text-primary border border-primary/20">
+                  <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/25 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
                     CLASS {cls.level} SCIENCE
                   </span>
-                  <div className="w-10 h-10 rounded-full bg-surface-muted group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-colors">
-                    <ArrowUpRight className="w-5 h-5 text-ink-primary group-hover:text-white" />
+                  <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 group-hover:bg-cyan-400 group-hover:border-cyan-300 flex items-center justify-center transition-all duration-300 shadow-sm">
+                    <ArrowUpRight className="w-5 h-5 text-slate-300 group-hover:text-slate-950 transition-colors" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="text-xl sm:text-2xl font-display font-bold text-ink-primary group-hover:text-primary transition-colors">
+                  <h4 className="text-xl sm:text-2xl font-display font-bold text-white group-hover:text-cyan-400 transition-colors">
                     {cls.title}
                   </h4>
-                  <p className="text-sm text-ink-muted leading-relaxed">
+                  <p className="text-sm text-slate-400 leading-relaxed">
                     {cls.description}
                   </p>
                 </div>
 
                 {/* Subject highlights with wrap protection */}
-                <div className="flex flex-wrap items-center gap-3 sm:gap-6 pt-4 border-t border-border/60 text-xs font-mono text-ink-muted">
-                  <span className="flex items-center gap-1.5">
-                    <Atom className="w-4 h-4 text-primary shrink-0" /> Physics
+                <div className="flex flex-wrap items-center gap-3 sm:gap-6 pt-5 border-t border-white/10 text-xs font-mono text-slate-300">
+                  <span className="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <Atom className="w-4 h-4 text-blue-400 shrink-0" /> Physics
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <FlaskConical className="w-4 h-4 text-accent-cyan shrink-0" /> Chemistry
+                  <span className="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <FlaskConical className="w-4 h-4 text-cyan-400 shrink-0" /> Chemistry
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <Binary className="w-4 h-4 text-accent-violet shrink-0" /> Mathematics
+                  <span className="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <Binary className="w-4 h-4 text-violet-400 shrink-0" /> Mathematics
                   </span>
                 </div>
               </div>

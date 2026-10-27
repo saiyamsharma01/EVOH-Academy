@@ -58,14 +58,14 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
     <div className="py-8 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
       
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs font-mono text-ink-muted overflow-x-auto pb-1 no-scrollbar">
-        <Link href="/notes" className="hover:text-primary flex items-center gap-1 shrink-0">
+      <div className="flex items-center gap-2 text-xs font-mono text-slate-400 overflow-x-auto pb-1 no-scrollbar">
+        <Link href="/notes" className="hover:text-cyan-400 flex items-center gap-1 shrink-0">
           <ArrowLeft className="w-3.5 h-3.5" /> All Notes
         </Link>
         <span>/</span>
-        <span className="text-ink-primary font-bold shrink-0">{note.subject}</span>
+        <span className="text-white font-bold shrink-0">{note.subject}</span>
         <span>/</span>
-        <span className="truncate max-w-[180px] sm:max-w-[280px]">{note.title}</span>
+        <span className="truncate max-w-[180px] sm:max-w-[280px] text-slate-300">{note.title}</span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -74,22 +74,22 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
         <div className="lg:col-span-8 space-y-8 sm:space-y-10">
           <div className="space-y-3 sm:space-y-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-primary/10 text-primary border border-primary/20">
+              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950/40 text-cyan-400 border border-cyan-500/20">
                 CLASS {note.classLevel} SCIENCE
               </span>
-              <span className="px-3 py-1 rounded-full text-xs font-mono bg-surface-muted text-ink-muted border border-border">
+              <span className="px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-slate-300 border border-white/10">
                 {note.type}
               </span>
-              <span className="text-xs font-mono text-ink-muted sm:ml-auto">
+              <span className="text-xs font-mono text-slate-400 sm:ml-auto">
                 Edition: {note.version} • {note.lastUpdated}
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-display font-extrabold text-ink-primary tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
               {note.title}
             </h1>
 
-            <p className="text-sm sm:text-base text-ink-secondary leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
               {note.description}
             </p>
           </div>
@@ -101,36 +101,36 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
           />
 
           {/* Academic Faculty & Syllabus Verification Card */}
-          <div className="p-4 sm:p-6 rounded-2xl bg-surface-muted border border-border flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+          <div className="p-4 sm:p-6 rounded-2xl bg-surface-card/60 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 backdrop-blur-md">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
               <GraduationCap className="w-6 h-6" />
             </div>
             <div className="space-y-1 flex-1">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="font-display font-bold text-sm text-ink-primary">
+                <span className="font-display font-bold text-sm text-white">
                   {note.author}
                 </span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-700 font-bold border border-emerald-500/20">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/40 text-emerald-400 font-bold border border-emerald-500/20">
                   PEER VERIFIED
                 </span>
               </div>
-              <p className="text-xs text-ink-muted">
+              <p className="text-xs text-slate-400">
                 Constructed strictly aligned with the latest CBSE/NCERT 2025–26 syllabus guidelines with zero unverified shortcuts.
               </p>
             </div>
           </div>
 
           {/* What is Included Checklist */}
-          <div className="p-5 sm:p-8 rounded-2xl bg-white border border-border shadow-sm space-y-4">
-            <h3 className="text-base sm:text-lg font-display font-bold text-ink-primary flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-accent-cyan" />
+          <div className="p-5 sm:p-8 rounded-2xl bg-surface-card/75 border border-white/10 shadow-lg space-y-4 backdrop-blur-md">
+            <h3 className="text-base sm:text-lg font-display font-bold text-white flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-cyan-400" />
               <span>What Is Included in This Resource</span>
             </h3>
 
             <ul className="space-y-3">
               {note.whatIsIncluded.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-primary">
-                  <CheckCircle2 className="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" />
+                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 mt-0.5 text-cyan-400 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -140,15 +140,15 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
 
         {/* Right Column: Checkout Card & Licensing Guarantee */}
         <div className="lg:col-span-4 lg:sticky top-24 space-y-6 w-full">
-          <div className="p-5 sm:p-8 rounded-2xl bg-white border border-border shadow-xl space-y-6">
+          <div className="p-5 sm:p-8 rounded-2xl bg-surface-card/85 border border-white/10 shadow-2xl space-y-6 backdrop-blur-md">
             <div className="space-y-1">
-              <span className="text-xs font-mono uppercase text-ink-muted">Access License</span>
+              <span className="text-xs font-mono uppercase text-slate-400">Access License</span>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-display font-extrabold text-ink-primary">
+                <span className="text-3xl sm:text-4xl font-display font-extrabold text-white">
                   {note.isFree ? "Free" : note.priceFormatted}
                 </span>
                 {!note.isFree && (
-                  <span className="text-xs font-mono text-ink-muted">
+                  <span className="text-xs font-mono text-slate-400">
                     (GST inclusive)
                   </span>
                 )}
@@ -158,7 +158,7 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
             <div className="space-y-3 pt-2">
               <Link
                 href={note.isFree ? "#" : `/checkout?item=${note.id}`}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/25 transition-all hover:-translate-y-0.5"
               >
                 {note.isFree ? <Download className="w-4 h-4" /> : <Lock className="w-4 h-4" />}
                 <span>{note.isFree ? "Download Free PDF" : "Unlock Lifetime Access"}</span>
@@ -167,14 +167,14 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
               {!note.isFree && (
                 <Link
                   href={`/cart?add=${note.id}`}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-muted hover:bg-border border border-border text-ink-primary text-xs font-semibold transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-semibold transition-all"
                 >
-                  <ShoppingBag className="w-4 h-4 text-primary" />
+                  <ShoppingBag className="w-4 h-4 text-cyan-400" />
                   <span>Add to Cart</span>
                 </Link>
               )}
               
-              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2 text-[10px] font-mono text-ink-muted">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2 text-[10px] font-mono text-slate-500">
                 <span>⚡ Instant Access</span>
                 <span>•</span>
                 <span>🔒 UPI / Cards</span>
@@ -184,34 +184,34 @@ export default async function NoteDetailPage({ params }: NoteDetailProps) {
             </div>
 
             {/* Document Specs */}
-            <div className="pt-6 border-t border-border space-y-2.5 text-xs font-mono text-ink-muted">
+            <div className="pt-6 border-t border-white/10 space-y-2.5 text-xs font-mono text-slate-400">
               <div className="flex justify-between">
                 <span>Page Count:</span>
-                <span className="text-ink-primary font-bold">{note.pageCount} Pages</span>
+                <span className="text-white font-bold">{note.pageCount} Pages</span>
               </div>
               <div className="flex justify-between">
                 <span>File Size:</span>
-                <span className="text-ink-primary font-bold">{note.fileSizeBytes}</span>
+                <span className="text-white font-bold">{note.fileSizeBytes}</span>
               </div>
               <div className="flex justify-between">
                 <span>Format:</span>
-                <span className="text-ink-primary font-bold">Searchable PDF</span>
+                <span className="text-white font-bold">Searchable PDF</span>
               </div>
               <div className="flex justify-between">
                 <span>Protection:</span>
-                <span className="text-ink-primary font-bold">Dynamic Watermark</span>
+                <span className="text-white font-bold">Dynamic Watermark</span>
               </div>
             </div>
 
             {/* Refund & Security Notice (PRD Sec 15) */}
-            <div className="p-4 rounded-xl bg-surface-muted text-xs space-y-2 text-ink-muted">
-              <div className="flex items-center gap-1.5 font-semibold text-ink-primary font-mono text-[11px]">
-                <Shield className="w-3.5 h-3.5 text-primary" />
+            <div className="p-4 rounded-xl bg-surface-muted/90 border border-white/10 text-xs space-y-2 text-slate-400">
+              <div className="flex items-center gap-1.5 font-semibold text-white font-mono text-[11px]">
+                <Shield className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Buyer Protection Policy</span>
               </div>
               <p className="text-[11px] leading-relaxed">
                 Subject to our verified refund policy. Digital downloads are non-refundable once the file is downloaded, unless defective.{" "}
-                <Link href="/refund-policy" className="text-primary hover:underline font-medium">
+                <Link href="/refund-policy" className="text-cyan-400 hover:underline font-medium">
                   Read terms
                 </Link>
                 .

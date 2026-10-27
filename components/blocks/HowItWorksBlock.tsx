@@ -55,22 +55,22 @@ export default function HowItWorksBlock({ config }: { config: HowItWorksConfig }
             return (
               <div
                 key={idx}
-                className="relative p-6 sm:p-8 rounded-2xl bg-white border border-border shadow-sm hover:shadow-md transition-shadow space-y-4 sm:space-y-6"
+                className="relative p-6 sm:p-8 rounded-3xl bg-surface-card/75 hover:bg-surface-card-hover/90 border border-white/10 hover:border-cyan-500/40 shadow-xl backdrop-blur-md transition-all duration-300 space-y-4 sm:space-y-6 group"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/25 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.15)]">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="text-2xl sm:text-3xl font-mono font-extrabold text-border">
+                  <span className="text-2xl sm:text-3xl font-mono font-extrabold text-white/15 group-hover:text-cyan-400/30 transition-colors">
                     {s.num}
                   </span>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg sm:text-xl font-display font-bold text-ink-primary">
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-white group-hover:text-cyan-400 transition-colors">
                     {s.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                     {s.body}
                   </p>
                 </div>
@@ -79,9 +79,9 @@ export default function HowItWorksBlock({ config }: { config: HowItWorksConfig }
           })}
         </div>
 
-        <div className="mt-10 sm:mt-12 text-center text-[11px] sm:text-xs font-mono text-ink-muted flex flex-col sm:flex-row items-center justify-center gap-2 max-w-2xl mx-auto">
-          <div className="flex items-center gap-1.5 text-emerald-700 font-semibold">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+        <div className="mt-10 sm:mt-12 text-center text-[11px] sm:text-xs font-mono text-slate-400 flex flex-col sm:flex-row items-center justify-center gap-2 max-w-2xl mx-auto">
+          <div className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>GST-Compliant Invoicing</span>
           </div>
           <span className="hidden sm:inline">•</span>

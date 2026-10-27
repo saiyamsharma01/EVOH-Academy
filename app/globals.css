@@ -3,35 +3,33 @@
 @tailwind utilities;
 
 :root {
-  /* Warm Ivory / Editorial Surfaces (PRD Sec 6) */
-  --surface-base: 40 40% 98%;       /* #FDFBF7 */
-  --surface-muted: 40 25% 94%;      /* #F5F2EB */
-  --surface-dark: 224 59% 10%;      /* #0A1128 */
-  --surface-dark-card: 226 42% 16%; /* #16203B */
+  /* Quantum Obsidian Deep Void Theme (PRD & Professional Science Tech Aesthetic) */
+  --surface-base: 224 55% 5%;          /* #050814 - Deep Void / Cosmic Black */
+  --surface-muted: 226 40% 9%;         /* #090E20 - Elevated Section Slate */
+  --surface-card: 226 35% 11%;         /* #0D152B - Rich Dark Card Canvas */
+  --surface-card-hover: 226 30% 16%;   /* #141E3A - Card Hover State */
+  --surface-dark: 224 55% 5%;          /* #050814 */
+  --surface-dark-card: 226 38% 12%;    /* #0F182E */
 
-  /* Academic Cobalt & High Contrast Ink */
-  --primary: 224 76% 48%;           /* #1D4ED8 */
-  --primary-hover: 221 83% 53%;     /* #2563EB */
-  --accent-cyan: 189 94% 43%;       /* #06B6D4 */
-  --accent-violet: 239 84% 67%;     /* #6366F1 */
+  /* Electric Cobalt, Quantum Cyan & Molecular Violet */
+  --primary: 217 91% 60%;              /* #3B82F6 - Electric Blue */
+  --primary-hover: 221 83% 53%;        /* #2563EB */
+  --accent-cyan: 189 94% 48%;          /* #06B6D4 - Quantum Cyan */
+  --accent-violet: 258 90% 66%;        /* #8B5CF6 - Molecular Violet */
 
-  --text-primary: 222 47% 11%;      /* #0F172A */
-  --text-muted: 215 16% 47%;        /* #64748B */
+  /* Crisp Typography */
+  --text-primary: 210 40% 98%;         /* #F8FAFC - Crisp Bright White */
+  --text-secondary: 215 20% 75%;       /* #CBD5E1 - Muted Clean Slate */
+  --text-muted: 215 16% 56%;           /* #94A3B8 - Slate Technical Muted */
 
   --background: var(--surface-base);
   --foreground: var(--text-primary);
 
-  --border: 40 20% 88%;
-  --input: 40 20% 88%;
+  --border: 226 28% 18%;               /* #1E2942 - Subtle Cosmic Border */
+  --border-subtle: 226 25% 13%;
+  --input: 226 32% 11%;                /* Dark Input Canvas */
   --ring: var(--primary);
-  --radius: 0.5rem;
-}
-
-.dark {
-  --background: var(--surface-dark);
-  --foreground: 210 40% 98%;
-  --border: 226 40% 20%;
-  --input: 226 40% 20%;
+  --radius: 0.75rem;
 }
 
 body {
@@ -42,34 +40,45 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Scientific Grid & Mathematical Visual Rhythm */
+/* Scientific Grid & Mathematical Visual Rhythm (Dark Quantum Grid) */
 .scientific-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
 .scientific-grid-dark {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-/* Subtle Glassmorphism for floating controls */
-.editorial-glass {
-  background: rgba(253, 251, 247, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-}
-
+/* Glassmorphism for floating controls & headers */
+.editorial-glass,
 .dark-glass {
-  background: rgba(11, 19, 43, 0.88);
+  background: rgba(8, 14, 32, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Quantum Glass Card */
+.quantum-card {
+  background: rgba(13, 21, 43, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quantum-card:hover {
+  background: rgba(18, 29, 58, 0.85);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 10px 30px -5px rgba(6, 182, 212, 0.15), 0 0 20px -2px rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
 }
 
 /* Scientific Glow & Accents */
@@ -78,5 +87,21 @@ body {
 }
 
 .cobalt-glow {
-  box-shadow: 0 0 30px rgba(29, 78, 216, 0.2);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
+}
+
+/* Smooth custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050814;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }

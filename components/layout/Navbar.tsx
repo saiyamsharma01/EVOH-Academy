@@ -103,7 +103,7 @@ export default function Navbar({
         <div className="hidden sm:flex items-center gap-2.5">
           <Link
             href="/search"
-            className="p-2 rounded-lg text-ink-muted hover:text-ink-primary hover:bg-surface-muted transition-colors"
+            className="p-2 rounded-lg text-ink-muted hover:text-white hover:bg-surface-card transition-colors"
             aria-label="Search curriculum and notes"
           >
             <Search className="w-4 h-4" />
@@ -111,18 +111,18 @@ export default function Navbar({
 
           <Link
             href="/cart"
-            className="relative p-2 rounded-lg text-ink-muted hover:text-ink-primary hover:bg-surface-muted transition-colors"
+            className="relative p-2 rounded-lg text-ink-muted hover:text-white hover:bg-surface-card transition-colors"
             aria-label="Cart"
           >
             <ShoppingBag className="w-4 h-4" />
-            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
+            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
           </Link>
 
           {user ? (
             <div className="flex items-center gap-2">
               <Link
                 href="/dashboard"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary/10 text-primary border border-primary/20 text-xs font-semibold hover:bg-primary/20 transition-colors"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary/15 text-blue-400 border border-primary/30 text-xs font-semibold hover:bg-primary/25 transition-colors"
               >
                 <LayoutDashboard className="w-3.5 h-3.5" />
                 <span>Dashboard</span>
@@ -130,7 +130,7 @@ export default function Navbar({
               <button
                 onClick={handleSignOut}
                 title="Sign Out"
-                className="p-2 rounded-lg text-ink-muted hover:text-red-600 hover:bg-red-50 transition-colors"
+                className="p-2 rounded-lg text-ink-muted hover:text-red-400 hover:bg-red-500/10 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
               </button>
@@ -139,14 +139,14 @@ export default function Navbar({
             <div className="flex items-center gap-2">
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-border bg-white text-xs font-semibold text-ink-primary hover:border-primary/40 hover:text-primary transition-colors"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-white/10 bg-surface-card hover:bg-surface-card-hover text-xs font-semibold text-white hover:border-cyan-500/40 transition-all shadow-xs"
               >
-                <User className="w-3.5 h-3.5 text-primary" />
+                <User className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Student Login</span>
               </Link>
               <Link
                 href="/register"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-md shadow-primary/25 transition-all hover:-translate-y-0.5"
               >
                 <span>Register</span>
               </Link>
@@ -176,7 +176,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="sm:hidden px-4 pt-3 pb-6 bg-white/95 backdrop-blur-md border-b border-border shadow-xl space-y-4">
+        <div className="sm:hidden px-4 pt-3 pb-6 bg-surface-base/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl space-y-4">
           <nav className="flex flex-col space-y-1 pt-2">
             {items.map((item) => {
               const isActive =
@@ -189,8 +189,8 @@ export default function Navbar({
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                     isActive
-                      ? "text-primary font-bold bg-primary/10"
-                      : "text-ink-primary hover:bg-surface-muted"
+                      ? "text-cyan-400 font-bold bg-cyan-500/10 border border-cyan-500/20"
+                      : "text-ink-secondary hover:text-white hover:bg-surface-card"
                   }`}
                 >
                   {item.label}
@@ -198,7 +198,7 @@ export default function Navbar({
               );
             })}
           </nav>
-          <div className="pt-4 border-t border-border flex flex-col gap-2.5">
+          <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
             {user ? (
               <>
                 <Link
@@ -213,7 +213,7 @@ export default function Navbar({
                     setMobileMenuOpen(false);
                     handleSignOut();
                   }}
-                  className="w-full text-center py-2 rounded-lg border border-red-200 text-red-600 text-sm font-semibold"
+                  className="w-full text-center py-2 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 text-sm font-semibold"
                 >
                   Sign Out
                 </button>
@@ -223,7 +223,7 @@ export default function Navbar({
                 <Link
                   href="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 rounded-lg border border-border text-sm font-semibold text-ink-primary"
+                  className="w-full text-center py-2.5 rounded-lg border border-white/10 bg-surface-card text-sm font-semibold text-white"
                 >
                   Student Login
                 </Link>

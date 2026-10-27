@@ -79,62 +79,62 @@ export default function AdminDashboardPage() {
       {/* Real Metric Cards with Visual Trend Bar */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((m, idx) => (
-          <div key={idx} className="p-6 rounded-2xl bg-white border border-border shadow-sm space-y-3 relative overflow-hidden">
+          <div key={idx} className="p-6 rounded-2xl bg-surface-card/75 border border-white/10 shadow-lg space-y-3 relative overflow-hidden backdrop-blur-md">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono text-ink-muted uppercase">{m.label}</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span className="text-xs font-mono text-slate-400 uppercase">{m.label}</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50" />
             </div>
-            <div className="text-3xl font-display font-extrabold text-ink-primary">{m.value}</div>
+            <div className="text-3xl font-display font-extrabold text-white">{m.value}</div>
             <div className="flex items-center justify-between pt-1">
-              <span className="text-[11px] font-mono text-ink-muted">{m.sub}</span>
-              <span className="text-[10px] font-mono text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">Active</span>
+              <span className="text-[11px] font-mono text-slate-400">{m.sub}</span>
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/40 px-1.5 py-0.5 rounded border border-emerald-500/20">Active</span>
             </div>
             <div className="w-full h-1 bg-surface-muted rounded-full overflow-hidden">
-              <div className="h-full bg-primary rounded-full" style={{ width: `${(idx + 1) * 20}%` }} />
+              <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full" style={{ width: `${(idx + 1) * 20}%` }} />
             </div>
           </div>
         ))}
       </div>
 
       {/* System Infrastructure Health Monitor (PRD Section 17) */}
-      <div className="p-6 rounded-2xl bg-white border border-border shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-surface-card/75 border border-white/10 shadow-lg space-y-4 backdrop-blur-md">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <h3 className="text-sm font-display font-bold text-ink-primary">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400/50" />
+            <h3 className="text-sm font-display font-bold text-white">
               Core Platform Infrastructure & Gateway Status
             </h3>
           </div>
-          <span className="text-xs font-mono text-ink-muted">Health: 100% Operational</span>
+          <span className="text-xs font-mono text-cyan-400">Health: 100% Operational</span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
-          <div className="p-3 rounded-xl bg-surface-muted border border-border space-y-1">
-            <span className="text-ink-muted block text-[10px]">DATABASE ORM</span>
-            <span className="text-ink-primary font-bold">Prisma / Postgres</span>
-            <span className="text-emerald-600 block text-[10px]">● Connected</span>
+          <div className="p-3 rounded-xl bg-surface-muted/90 border border-white/10 space-y-1">
+            <span className="text-slate-400 block text-[10px]">DATABASE ORM</span>
+            <span className="text-white font-bold">Prisma / Postgres</span>
+            <span className="text-emerald-400 block text-[10px]">● Connected</span>
           </div>
-          <div className="p-3 rounded-xl bg-surface-muted border border-border space-y-1">
-            <span className="text-ink-muted block text-[10px]">PAYMENTS GATEWAY</span>
-            <span className="text-ink-primary font-bold">Razorpay Standard</span>
-            <span className="text-emerald-600 block text-[10px]">● Signature Ready</span>
+          <div className="p-3 rounded-xl bg-surface-muted/90 border border-white/10 space-y-1">
+            <span className="text-slate-400 block text-[10px]">PAYMENTS GATEWAY</span>
+            <span className="text-white font-bold">Razorpay Standard</span>
+            <span className="text-emerald-400 block text-[10px]">● Signature Ready</span>
           </div>
-          <div className="p-3 rounded-xl bg-surface-muted border border-border space-y-1">
-            <span className="text-ink-muted block text-[10px]">PDF WATERMARK ENGINE</span>
-            <span className="text-ink-primary font-bold">pdf-lib Dynamic</span>
-            <span className="text-emerald-600 block text-[10px]">● 0ms Warm Latency</span>
+          <div className="p-3 rounded-xl bg-surface-muted/90 border border-white/10 space-y-1">
+            <span className="text-slate-400 block text-[10px]">PDF WATERMARK ENGINE</span>
+            <span className="text-white font-bold">pdf-lib Dynamic</span>
+            <span className="text-emerald-400 block text-[10px]">● 0ms Warm Latency</span>
           </div>
-          <div className="p-3 rounded-xl bg-surface-muted border border-border space-y-1">
-            <span className="text-ink-muted block text-[10px]">RBAC ENFORCEMENT</span>
-            <span className="text-ink-primary font-bold">Role Matrix (can())</span>
-            <span className="text-emerald-600 block text-[10px]">● Strictly Enforced</span>
+          <div className="p-3 rounded-xl bg-surface-muted/90 border border-white/10 space-y-1">
+            <span className="text-slate-400 block text-[10px]">RBAC ENFORCEMENT</span>
+            <span className="text-white font-bold">Role Matrix (can())</span>
+            <span className="text-emerald-400 block text-[10px]">● Strictly Enforced</span>
           </div>
         </div>
       </div>
 
       {/* Admin Modules Grid */}
       <div className="space-y-4">
-        <h2 className="text-xl font-display font-bold text-ink-primary">
+        <h2 className="text-xl font-display font-bold text-white">
           Administrative Modules
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -144,23 +144,23 @@ export default function AdminDashboardPage() {
               <Link
                 key={idx}
                 href={nav.path}
-                className="p-6 rounded-2xl bg-white border border-border hover:border-primary/40 shadow-sm hover:shadow-lg transition-all group flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-surface-card/75 border border-white/10 hover:border-cyan-500/40 shadow-lg hover:shadow-2xl transition-all group flex flex-col justify-between backdrop-blur-md hover:-translate-y-1"
               >
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 flex items-center justify-center group-hover:scale-105 transition-transform shadow-md shadow-cyan-950/50">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-display font-bold text-ink-primary group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-display font-bold text-white group-hover:text-cyan-400 transition-colors">
                       {nav.label}
                     </h3>
-                    <p className="text-xs text-ink-muted mt-1 leading-relaxed">
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
                       {nav.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="pt-6 mt-4 border-t border-border flex items-center justify-between text-xs font-semibold text-primary">
+                <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-cyan-400">
                   <span>Open Module</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -171,35 +171,35 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* RBAC Permission Matrix Preview for SUPER_ADMIN (PRD Sec 3.2) */}
-      <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-border shadow-sm space-y-5 sm:space-y-6">
+      <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-surface-card/75 border border-white/10 shadow-xl space-y-5 sm:space-y-6 backdrop-blur-md">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="text-base sm:text-lg font-display font-bold text-ink-primary flex items-center gap-2">
-              <Shield className="w-5 h-5 text-primary shrink-0" />
+            <h3 className="text-base sm:text-lg font-display font-bold text-white flex items-center gap-2">
+              <Shield className="w-5 h-5 text-cyan-400 shrink-0" />
               <span>System Role & Permission Matrix (Live Enforced)</span>
             </h3>
-            <p className="text-xs text-ink-muted mt-0.5">
-              Centralized authorization matrix defined in <code>server/auth/permissions.ts</code> and enforced via <code>can()</code>.
+            <p className="text-xs text-slate-400 mt-0.5">
+              Centralized authorization matrix defined in <code className="text-cyan-400 font-mono">server/auth/permissions.ts</code> and enforced via <code className="text-cyan-400 font-mono">can()</code>.
             </p>
           </div>
-          <span className="text-xs font-mono text-ink-muted shrink-0">6 Defined Roles</span>
+          <span className="text-xs font-mono text-cyan-400 shrink-0">6 Defined Roles</span>
         </div>
 
         <div className="overflow-x-auto -mx-2 sm:mx-0">
           <table className="w-full min-w-[520px] text-left text-xs font-mono border-collapse">
             <thead>
-              <tr className="border-b border-border bg-surface-muted">
-                <th className="p-3 font-bold text-ink-primary">Role Name</th>
-                <th className="p-3 font-bold text-ink-primary">Permissions</th>
-                <th className="p-3 font-bold text-ink-primary">High-Privilege Scope</th>
+              <tr className="border-b border-white/10 bg-surface-muted/90">
+                <th className="p-3 font-bold text-white">Role Name</th>
+                <th className="p-3 font-bold text-white">Permissions</th>
+                <th className="p-3 font-bold text-white">High-Privilege Scope</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody className="divide-y divide-white/10">
               {Object.entries(ROLE_PERMISSIONS).map(([role, perms]) => (
-                <tr key={role} className="hover:bg-surface-muted/50 transition-colors">
-                  <td className="p-3 font-bold text-ink-primary">{role}</td>
-                  <td className="p-3 text-ink-muted">{perms.length} permissions active</td>
-                  <td className="p-3 text-ink-muted truncate max-w-xs">
+                <tr key={role} className="hover:bg-white/5 transition-colors">
+                  <td className="p-3 font-bold text-white">{role}</td>
+                  <td className="p-3 text-slate-400">{perms.length} permissions active</td>
+                  <td className="p-3 text-slate-400 truncate max-w-xs">
                     {perms.slice(0, 4).join(", ")}
                     {perms.length > 4 ? ` + ${perms.length - 4} more` : ""}
                   </td>

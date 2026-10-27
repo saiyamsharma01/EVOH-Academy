@@ -13,6 +13,8 @@ const config: Config = {
         surface: {
           base: "hsl(var(--surface-base))",
           muted: "hsl(var(--surface-muted))",
+          card: "hsl(var(--surface-card))",
+          "card-hover": "hsl(var(--surface-card-hover))",
           dark: "hsl(var(--surface-dark))",
           "dark-card": "hsl(var(--surface-dark-card))",
         },
@@ -26,6 +28,7 @@ const config: Config = {
         },
         ink: {
           primary: "hsl(var(--text-primary))",
+          secondary: "hsl(var(--text-secondary))",
           muted: "hsl(var(--text-muted))",
         },
         border: "hsl(var(--border))",

@@ -91,10 +91,10 @@ export default function GoogleButton({
         type="button"
         onClick={handleGoogleLogin}
         disabled={loading}
-        className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-border bg-white hover:bg-surface-muted text-ink-primary text-sm font-semibold shadow-xs hover:border-ink-muted/30 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-white/10 bg-surface-base/80 hover:bg-surface-card-hover text-white text-sm font-semibold shadow-md shadow-black/40 hover:border-cyan-500/40 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {loading ? (
-          <Loader2 className="w-4 h-4 animate-spin text-ink-muted" />
+          <Loader2 className="w-4 h-4 animate-spin text-cyan-400" />
         ) : (
           <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
             <path
@@ -120,52 +120,52 @@ export default function GoogleButton({
 
       {/* Supabase Google Provider Setup Modal */}
       {showConfigModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="relative w-full max-w-md bg-white rounded-3xl p-6 sm:p-7 shadow-2xl border border-border space-y-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
+          <div className="relative w-full max-w-md bg-surface-card rounded-3xl p-6 sm:p-7 shadow-2xl border border-white/15 space-y-5 text-white">
             <button
               onClick={() => setShowConfigModal(false)}
-              className="absolute top-5 right-5 p-1 rounded-full text-ink-muted hover:text-ink-primary hover:bg-surface-muted"
+              className="absolute top-5 right-5 p-1 rounded-full text-slate-400 hover:text-white hover:bg-white/10"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center">
                 <AlertCircle className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-base font-display font-bold text-ink-primary">
+                <h3 className="text-base font-display font-bold text-white">
                   Google Sign-In Setup
                 </h3>
-                <p className="text-xs text-ink-muted">
+                <p className="text-xs text-slate-400">
                   Supabase requires Google OAuth to be enabled
                 </p>
               </div>
             </div>
 
-            <p className="text-xs text-ink-secondary leading-relaxed">
+            <p className="text-xs text-slate-300 leading-relaxed">
               Google OAuth code is 100% ready in the website, but Google Provider is not toggled on yet in your Supabase project.
             </p>
 
-            <div className="space-y-3 p-4 rounded-2xl bg-surface-muted border border-border text-xs">
-              <span className="font-semibold text-ink-primary block font-mono">
+            <div className="space-y-3 p-4 rounded-2xl bg-surface-base/80 border border-white/10 text-xs">
+              <span className="font-semibold text-white block font-mono">
                 1. Supabase Redirect URI (paste into Google Cloud):
               </span>
-              <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-border">
-                <span className="font-mono text-[11px] truncate select-all flex-1 text-ink-muted">
+              <div className="flex items-center gap-2 bg-black/40 px-3 py-2 rounded-xl border border-white/10">
+                <span className="font-mono text-[11px] truncate select-all flex-1 text-slate-300">
                   {redirectUri}
                 </span>
                 <button
                   type="button"
                   onClick={copyCallbackUrl}
-                  className="px-2 py-1 rounded-lg bg-primary/10 text-primary text-[11px] font-bold flex items-center gap-1 hover:bg-primary/20 shrink-0"
+                  className="px-2.5 py-1 rounded-lg bg-cyan-500/15 text-cyan-400 text-[11px] font-bold flex items-center gap-1 hover:bg-cyan-500/25 shrink-0 transition-colors"
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                   <span>{copied ? "Copied" : "Copy"}</span>
                 </button>
               </div>
 
-              <span className="font-semibold text-ink-primary block font-mono pt-1">
+              <span className="font-semibold text-white block font-mono pt-1">
                 2. Setup Links:
               </span>
               <div className="flex flex-col sm:flex-row gap-2">
@@ -173,23 +173,23 @@ export default function GoogleButton({
                   href="https://console.cloud.google.com/apis/credentials"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl border border-border bg-white text-ink-primary font-semibold text-xs hover:bg-surface-muted transition-colors flex-1"
+                  className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl border border-white/10 bg-white/5 text-white font-semibold text-xs hover:bg-white/10 transition-colors flex-1"
                 >
-                  <span>Google Console Credentials</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-ink-muted" />
+                  <span>Google Console</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </a>
                 <a
                   href="https://supabase.com/dashboard/project/jnoiozqhtclgzowxncaa/auth/providers"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-primary text-white font-semibold text-xs hover:bg-primary-hover transition-colors flex-1"
+                  className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-primary text-white font-semibold text-xs hover:bg-primary-hover transition-colors flex-1 shadow-md shadow-primary/25"
                 >
                   <span>Supabase Providers</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
-              <p className="text-[11px] text-ink-muted pt-1 leading-relaxed">
-                In Supabase Providers: click <strong>Google</strong> &gt; toggle <strong>Enable Google provider</strong> &gt; paste your <strong>Client ID</strong> &amp; <strong>Client Secret</strong> &gt; <strong>Save</strong>. Google sign-in works instantly!
+              <p className="text-[11px] text-slate-400 pt-1 leading-relaxed">
+                In Supabase Providers: click <strong>Google</strong> &gt; toggle <strong>Enable Google provider</strong> &gt; paste your <strong>Client ID</strong> &amp; <strong>Client Secret</strong> &gt; <strong>Save</strong>.
               </p>
             </div>
 
@@ -197,7 +197,7 @@ export default function GoogleButton({
               <button
                 type="button"
                 onClick={() => setShowConfigModal(false)}
-                className="w-full py-2.5 rounded-xl border border-border text-xs font-semibold hover:bg-surface-muted text-ink-primary"
+                className="w-full py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs font-semibold hover:bg-white/10 text-white transition-colors"
               >
                 Got it, I&apos;ll use Email &amp; Password for now
               </button>
