@@ -57,7 +57,7 @@ export default function SubjectFeatureBlock({ config }: { config: SubjectFeature
             Designed for Scientific Rigor & Comprehension
           </h2>
           <p className="text-sm sm:text-base text-ink-muted">
-            Each subject is structured from foundational postulates up to advanced application problems, ensuring you understand the fundamental "why" behind every formula.
+            Each subject is structured from foundational postulates up to advanced application problems, ensuring you understand the fundamental &quot;why&quot; behind every formula.
           </p>
         </div>
 

@@ -18,8 +18,9 @@ export default function GoogleButton({
   const [loading, setLoading] = useState(false);
   const [showConfigModal, setShowConfigModal] = useState(false);
   const [copied, setCopied] = useState(false);
-
-  const redirectUri = "https://jnoiozqhtclgzowxncaa.supabase.co/auth/v1/callback";
+  const supabaseUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "https://jnoiozqhtclgzowxncaa.supabase.co";
+  const redirectUri = `${supabaseUrl}/auth/v1/callback`;
 
   const handleGoogleLogin = async () => {
     try {
@@ -129,7 +130,7 @@ export default function GoogleButton({
 
             <div className="space-y-3 p-4 rounded-2xl bg-surface-muted border border-border text-xs">
               <span className="font-semibold text-ink-primary block font-mono">
-                1. Supabase Callback URL (Copy this):
+                1. Supabase Redirect URI (paste into Google Cloud):
               </span>
               <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-border">
                 <span className="font-mono text-[11px] truncate select-all flex-1 text-ink-muted">
@@ -146,19 +147,30 @@ export default function GoogleButton({
               </div>
 
               <span className="font-semibold text-ink-primary block font-mono pt-1">
-                2. Open Supabase Dashboard:
+                2. Setup Links:
               </span>
-              <a
-                href="https://supabase.com/dashboard/project/jnoiozqhtclgzowxncaa/auth/providers"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 py-2 px-3 rounded-xl bg-primary text-white font-semibold text-xs hover:bg-primary-hover transition-colors"
-              >
-                <span>Go to Supabase Providers</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-              <p className="text-[11px] text-ink-muted pt-1">
-                Click <strong>Google</strong> &gt; toggle <strong>Enable Google provider</strong> &gt; paste your Google Client ID &amp; Secret &gt; Save.
+              <div className="flex flex-col sm:flex-row gap-2">
+                <a
+                  href="https://console.cloud.google.com/apis/credentials"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl border border-border bg-white text-ink-primary font-semibold text-xs hover:bg-surface-muted transition-colors flex-1"
+                >
+                  <span>Google Console Credentials</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-ink-muted" />
+                </a>
+                <a
+                  href="https://supabase.com/dashboard/project/jnoiozqhtclgzowxncaa/auth/providers"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-primary text-white font-semibold text-xs hover:bg-primary-hover transition-colors flex-1"
+                >
+                  <span>Supabase Providers</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+              <p className="text-[11px] text-ink-muted pt-1 leading-relaxed">
+                In Supabase Providers: click <strong>Google</strong> &gt; toggle <strong>Enable Google provider</strong> &gt; paste your <strong>Client ID</strong> &amp; <strong>Client Secret</strong> &gt; <strong>Save</strong>. Google sign-in works instantly!
               </p>
             </div>
 

@@ -63,7 +63,7 @@ export default function ContactPage() {
               Data Grievance & Minor Protection Officer
             </span>
             <span>
-              For statutory requests under India's Digital Personal Data Protection Act, 2023 (DPDP) or parental consent inquiries, contact us with the subject line <code>[DPDP Grievance]</code>.
+              For statutory requests under India&apos;s Digital Personal Data Protection Act, 2023 (DPDP) or parental consent inquiries, contact us with the subject line <code>[DPDP Grievance]</code>.
             </span>
           </div>
         </div>

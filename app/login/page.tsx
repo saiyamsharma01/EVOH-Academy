@@ -21,8 +21,18 @@ function LoginForm() {
     if (searchParams.get("registered") === "true") {
       setSuccess("Account created successfully! Please sign in with your credentials.");
     }
-    if (searchParams.get("error") === "auth_failed") {
-      setError("Social login could not be verified. Please try again or use your password.");
+    const err = searchParams.get("error");
+    const desc = searchParams.get("error_description");
+    if (err) {
+      if (err === "access_denied") {
+        setError("Google sign-in was cancelled.");
+      } else if (desc) {
+        setError(desc.replace(/\+/g, " "));
+      } else if (err === "auth_failed") {
+        setError("Social login could not be completed. Please try again or sign in with your email.");
+      } else {
+        setError(`Authentication issue: ${err}`);
+      }
     }
   }, [searchParams]);
 
