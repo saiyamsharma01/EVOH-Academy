@@ -130,3 +130,14 @@ npm run build
 ## ⚖️ Legal & Independent Entity Notice
 
 EVOH Academy is an independent educational initiative and is not affiliated with, endorsed by, or associated with the National Council of Educational Research and Training (NCERT), the Central Board of Secondary Education (CBSE), or any government examination authority. All notes, formula sheets, and derivations are original educational syntheses.
+
+---
+
+## 🔒 License & Intellectual Property
+
+**Proprietary & Confidential. All Rights Reserved.**
+
+Copyright © 2026 EVOH Academy / Saiyam Sharma.
+
+No person or entity may copy, modify, distribute, publish, sublicense, reverse-engineer, deploy, or commercially exploit any portion of this application, source code, database architecture, or educational materials without explicit prior written authorization from the copyright holder. See the [LICENSE](file:///Users/saiyam/EVOH%20Academy/LICENSE) file for complete terms.
+
